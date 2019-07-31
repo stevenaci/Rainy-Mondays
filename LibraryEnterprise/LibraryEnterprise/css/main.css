@@ -1,0 +1,32 @@
+﻿/* main styling */
+
+#main_container {
+    background-color: white;
+    color: black;
+    height:600px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    box-shadow: black 0px 5px 25px;
+}
+
+
+
+/* modify_books styling */
+
+#modify_books_table {
+    width: 400px;
+    margin: auto;
+}
+
+#gridview_books {
+
+    width: 80%;
+    margin: auto;
+}
+
+#btn_search_container {
+    width: 100px;
+    margin: auto;
+}
