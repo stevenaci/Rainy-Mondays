@@ -14,57 +14,61 @@
         <div id="main_container">
             <br />
             <br />
+            
             <table id="modify_books_table">
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_isbn" runat="server" Text="ISBN"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tb_isbn" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_author" runat="server" Text="Author: "></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tb_author" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_title" runat="server" Text="Title: "></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tb_title" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_genre" runat="server" Text="Genre: "></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tb_genre" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_year" runat="server" Text="Year: "></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tb_year" runat="server" TextMode="Number"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div id="btn_search_container">
-                            <asp:Button ID="btn_search" runat="server" Text="Search" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lb_isbn" runat="server" Text="ISBN"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tb_isbn" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lb_author" runat="server" Text="Author: "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tb_author" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lb_title" runat="server" Text="Title: "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tb_title" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lb_genre" runat="server" Text="Genre: "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tb_genre" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lb_year" runat="server" Text="Year: "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tb_year" runat="server" TextMode="Number"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="btn_search_container">
+                                <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            
             <br />
-            <asp:GridView ID="gridview_books" runat="server"></asp:GridView>
+            <div id="gridview_container">
+                <asp:GridView ID="gridview_books" runat="server"></asp:GridView>
+            </div>
         </div>
     </form>
 </body>

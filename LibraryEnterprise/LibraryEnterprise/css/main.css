@@ -1,7 +1,11 @@
 ﻿/* main styling */
 
+body {
+    background-color: aliceblue;
+}
+
 #main_container {
-    background-color: white;
+    background-color: aliceblue;
     color: black;
     height:600px;
     width: 1000px;
@@ -11,8 +15,6 @@
     box-shadow: black 0px 5px 25px;
 }
 
-
-
 /* modify_books styling */
 
 #modify_books_table {
@@ -20,13 +22,21 @@
     margin: auto;
 }
 
-#gridview_books {
-
-    width: 80%;
+#btn_search_container {
+    width: 100px;
     margin: auto;
 }
 
-#btn_search_container {
-    width: 100px;
+#gridview_container {
+    width: 80%;
+    height: 300px;
+    overflow: scroll;
+    border: 1px solid black;
+    margin: auto;
+}
+
+
+#gridview_books {
+    width: 100%;
     margin: auto;
 }

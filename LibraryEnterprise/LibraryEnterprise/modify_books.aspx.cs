@@ -18,35 +18,33 @@ namespace LibraryEnterprise
             {
                 get_gridview_data("SELECT * FROM books");
             }
-
-            
-
         }
 
+        /*
+         * Retrieve data from any table and display in gridview_books object in HTML
+         * Simple pass a SELECT query into this function and data will display
+         */
         private void get_gridview_data(string query)
         {
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand(query))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            using (DataTable data_table = new DataTable())
             {
-                using (SqlCommand command = new SqlCommand(query))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter())
-                    {
-                        command.Connection = connection;
-                        adapter.SelectCommand = command;
-                        using (DataTable data_table = new DataTable())
-                        {
-                            adapter.Fill(data_table);
-                            gridview_books.DataSource = data_table;
-                            gridview_books.DataBind();
-                            set_header_names();
-                        }
-                    }
-                }
+                command.Connection = connection;
+                adapter.SelectCommand = command;
+                adapter.Fill(data_table);
+                gridview_books.DataSource = data_table;
+                gridview_books.DataBind();
+                set_gridview_headers_books();
             }
         }
 
-        private void set_header_names()
+        /*
+         * Changes headers of table for Book table
+         */
+        private void set_gridview_headers_books()
         {
             gridview_books.HeaderRow.Cells[0].Text = "Book ID";
             gridview_books.HeaderRow.Cells[1].Text = "ISBN";
@@ -57,9 +55,17 @@ namespace LibraryEnterprise
             gridview_books.HeaderRow.Cells[6].Text = "Year";
         }
 
+        /*
+         * OnClick function for search button
+         */
         public void btn_search_Click(object sender, EventArgs e)
         {
-            if (!(tb_isbn.Text == "" || tb_author.Text == "" || tb_title.Text == "" || tb_genre.Text == "" || tb_year.Text == ""))
+            if (tb_isbn.Text == "" && tb_author.Text == "" && tb_title.Text == "" && tb_genre.Text == "" && tb_year.Text == "")
+            {
+                // display all books if textboxes are empty
+                get_gridview_data("SELECT * FROM books");
+            }
+            else
             {
                 string isbn = tb_isbn.Text.ToString();
                 string author = tb_author.Text.ToString();
