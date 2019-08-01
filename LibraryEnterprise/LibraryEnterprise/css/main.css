@@ -17,22 +17,34 @@ body {
 
 /* modify_books styling */
 
+#book_database_title {
+    text-align: center;
+}
+
 #main_table_container {
     width: 600px;
     margin: auto;
     /*background-color: purple;*/
 }
 
+#search_books_container, #modify_books_container {
+    display: inline-block;
+    vertical-align: top;
+    height: 250px;
+}
+
 #search_books_table {
+    
+    top: -50px;
     width: 300px;
     margin: auto;
     /*background-color: green;*/
-}delete_container
+}
 
 #delete_container {
     width: 175px;
     margin: auto;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 #delete_books_table {
@@ -42,6 +54,8 @@ body {
 }
 
 #modify_books_table {
+    display: inline-block;
+    vertical-align: top;
     width: 300px;
     margin: auto;
     /*background-color: green;*/
@@ -61,7 +75,7 @@ body {
 
 #gridview_container {
     width: 80%;
-    height: 275px;
+    height: 200px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;
@@ -70,4 +84,8 @@ body {
 #gridview_books {
     width: 100%;
     margin: auto;
+}
+
+.add_modify {
+    width: 200px;
 }
