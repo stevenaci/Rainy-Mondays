@@ -42,14 +42,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="lb_genre" runat="server" Text="Genre: "></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tb_genre" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <asp:Label ID="lb_year" runat="server" Text="Year: "></asp:Label>
                         </td>
                         <td>

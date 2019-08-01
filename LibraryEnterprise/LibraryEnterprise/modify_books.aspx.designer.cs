@@ -76,24 +76,6 @@ namespace LibraryEnterprise {
         protected global::System.Web.UI.WebControls.TextBox tb_title;
         
         /// <summary>
-        /// lb_genre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_genre;
-        
-        /// <summary>
-        /// tb_genre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_genre;
-        
-        /// <summary>
         /// lb_year control.
         /// </summary>
         /// <remarks>
