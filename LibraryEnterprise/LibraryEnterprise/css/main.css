@@ -17,24 +17,55 @@ body {
 
 /* modify_books styling */
 
-#modify_books_table {
-    width: 400px;
+#main_table_container {
+    width: 600px;
     margin: auto;
+    /*background-color: purple;*/
 }
 
+#search_books_table {
+    width: 300px;
+    margin: auto;
+    /*background-color: green;*/
+}delete_container
+
+#delete_container {
+    width: 175px;
+    margin: auto;
+    background-color: red;
+}
+
+#delete_books_table {
+    width: 125px;
+    left: 50px;
+    /*background-color: red;*/
+}
+
+#modify_books_table {
+    width: 300px;
+    margin: auto;
+    /*background-color: green;*/
+}
+
+#tb_delete_id {
+    width: 50px;
+}
+                 
 #btn_search_container {
     width: 100px;
     margin: auto;
 }
 
+
+/* Grid View Styling*/
+
 #gridview_container {
     width: 80%;
-    height: 300px;
+    height: 275px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;
 }
-
 
 #gridview_books {
     width: 100%;
