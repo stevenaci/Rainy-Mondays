@@ -54,3 +54,5 @@ C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\ob
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.CopyComplete
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.dll
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.pdb
+C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.Properties.Resources.resources
+C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.GenerateResource.cache
