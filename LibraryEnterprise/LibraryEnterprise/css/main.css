@@ -4,6 +4,35 @@ body {
     background-color: aliceblue;
 }
 
+.title {
+    font-size: 3em;
+    color: dimgrey;
+    text-align: center;
+}
+.subtitle{
+    font-size:2em;
+    color:dimgrey;
+    text-align:center;
+}
+table{
+    border-color:slateblue;
+}
+td {
+    width:30%;
+}
+
+.centerbox {
+    background-color: aliceblue;
+    color: black;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    box-shadow: black 0px 5px 25px;
+    align-content:center;
+    align-items:center;}
+
 #main_container {
     background-color: aliceblue;
     color: black;
@@ -17,55 +46,24 @@ body {
 
 /* modify_books styling */
 
-#main_table_container {
-    width: 600px;
-    margin: auto;
-    /*background-color: purple;*/
-}
-
-#search_books_table {
-    width: 300px;
-    margin: auto;
-    /*background-color: green;*/
-}delete_container
-
-#delete_container {
-    width: 175px;
-    margin: auto;
-    background-color: red;
-}
-
-#delete_books_table {
-    width: 125px;
-    left: 50px;
-    /*background-color: red;*/
-}
-
 #modify_books_table {
-    width: 300px;
+    width: 400px;
     margin: auto;
-    /*background-color: green;*/
 }
 
-#tb_delete_id {
-    width: 50px;
-}
-                 
 #btn_search_container {
     width: 100px;
     margin: auto;
 }
 
-
-/* Grid View Styling*/
-
 #gridview_container {
     width: 80%;
-    height: 275px;
+    height: 300px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;
 }
+
 
 #gridview_books {
     width: 100%;
