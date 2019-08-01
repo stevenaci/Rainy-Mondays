@@ -12,6 +12,8 @@ namespace LibraryEnterprise
 {
     public partial class modify_books : System.Web.UI.Page
     {
+        // The default select query for retrieving book data
+        // Searching will concatenate a WHERE condition at the end
         string select_query = "SELECT b.book_id AS 'ID', b.isbn AS 'ISBN', b.author AS 'Author', " +
                               "b.title AS 'Title', g.genre_name AS 'Genre', b.language AS 'Language', " +
                               "b.year AS 'Year', b.quantity AS 'Quantity' " +
@@ -23,6 +25,7 @@ namespace LibraryEnterprise
             if (!IsPostBack)
             {
                 get_gridview_data(select_query);
+                get_genre_data();
             }
         }
 
@@ -44,7 +47,6 @@ namespace LibraryEnterprise
                 adapter.SelectCommand = command;
                 data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
                 adapter.Fill(data_table);
-
                 gridview_books.DataSource = data_table;
                 gridview_books.DataBind();
             }
@@ -71,48 +73,88 @@ namespace LibraryEnterprise
 
                 bool multiple_conditions = false;
 
-                if (isbn != "")
-                {
-                    if (multiple_conditions)
-                    {
-                        select_query += " AND ";
-                    }
-                    select_query += "isbn LIKE '%" + isbn + "%' ";
-                    multiple_conditions = true;
-                }
+                multiple_conditions = add_where_conditions("isbn", isbn, multiple_conditions);
+                multiple_conditions = add_where_conditions("author", author, multiple_conditions);
+                multiple_conditions = add_where_conditions("title", title, multiple_conditions);
+                multiple_conditions = add_where_conditions("year", year, multiple_conditions);
 
-                if (author != "")
-                {
-                    if (multiple_conditions)
-                    {
-                        select_query += " AND ";
-                    }
-                    select_query += "author LIKE '%" + author + "%' ";
-                    multiple_conditions = true;
-                }
 
-                if (title != "")
-                {
-                    if (multiple_conditions)
-                    {
-                        select_query += " AND ";
-                    }
-                    select_query += "title LIKE '%" + title + "%' ";
-                    multiple_conditions = true;
-                }
 
-                if (year != "")
-                {
-                    if (multiple_conditions)
-                    {
-                        select_query += " AND ";
-                    }
-                    select_query += "year = " + year + " ";
-                    multiple_conditions = true;
-                }
+                //if (isbn != "")
+                //{
+                //    if (multiple_conditions)
+                //    {
+                //        select_query += " AND ";
+                //    }
+                //    select_query += "isbn LIKE '%" + isbn + "%' ";
+                //    multiple_conditions = true;
+                //}
+
+                //if (author != "")
+                //{
+                //    if (multiple_conditions)
+                //    {
+                //        select_query += " AND ";
+                //    }
+                //    select_query += "author LIKE '%" + author + "%' ";
+                //    multiple_conditions = true;
+                //}
+
+                //if (title != "")
+                //{
+                //    if (multiple_conditions)
+                //    {
+                //        select_query += " AND ";
+                //    }
+                //    select_query += "title LIKE '%" + title + "%' ";
+                //    multiple_conditions = true;
+                //}
+
+                //if (year != "")
+                //{
+                //    if (multiple_conditions)
+                //    {
+                //        select_query += " AND ";
+                //    }
+                //    select_query += "year = " + year + " ";
+                //    multiple_conditions = true;
+                //}
 
                 get_gridview_data(select_query);
             }
+        }
+
+        private void get_genre_data()
+        {
+            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand("SELECT genre_name FROM genres;"))
+            {
+                connection.Open();
+                command.Connection = connection;
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        dd_genre.Items.Add(reader[0].ToString());
+                    }
+                }
+                connection.Close();
+            }
+        }
+
+        protected bool add_where_conditions(string column, string value, bool multiple_conditions)
+        {
+            if (value != "")
+            {
+                if (multiple_conditions)
+                {
+                    select_query += " AND ";
+                }
+                select_query += column + " LIKE '%" + value + "%' ";
+                multiple_conditions = true;
+            }
+            return multiple_conditions;
         }
 
         /*
@@ -143,7 +185,7 @@ namespace LibraryEnterprise
         */
         protected void btn_update_Click(object sender, EventArgs e)
         {
-            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" || tb_genre3.Text == "" ||
+            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
                             tb_language3.Text == "" || tb_year3.Text == "" || tb_quantity3.Text == "")
             {
                 // ERROR: EMPTY FIELD DETECTED
@@ -155,7 +197,7 @@ namespace LibraryEnterprise
                 string isbn = tb_isbm3.Text.ToString().Trim();
                 string author = tb_author3.Text.ToString().Trim();
                 string title = tb_title3.Text.ToString().Trim();
-                string genre = tb_genre3.Text.ToString().Trim();
+                string genre = dd_genre.Text.ToString().Trim();
                 string language = tb_language3.Text.ToString().Trim();
                 int year = Convert.ToInt32(tb_year3.Text.ToString().Trim());
                 int quantity = Convert.ToInt32(tb_quantity3.Text.ToString().Trim());
@@ -181,7 +223,7 @@ namespace LibraryEnterprise
         */
         protected void btn_add_Click(object sender, EventArgs e)
         {
-            if (tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" || tb_genre3.Text == "" ||
+            if (tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
                 tb_language3.Text == "" || tb_year3.Text == "" || tb_quantity3.Text == "")
             {
                 // ERROR: EMPTY FIELD DETECTED
@@ -193,7 +235,7 @@ namespace LibraryEnterprise
                 string isbn = tb_isbm3.Text.ToString().Trim();
                 string author = tb_author3.Text.ToString().Trim();
                 string title = tb_title3.Text.ToString().Trim();
-                string genre = tb_genre3.Text.ToString().Trim();
+                string genre = dd_genre.Text.ToString().Trim();
                 string language = tb_language3.Text.ToString().Trim();
                 int year = Convert.ToInt32(tb_year3.Text.ToString().Trim());
                 int quantity = Convert.ToInt32(tb_quantity3.Text.ToString().Trim());
