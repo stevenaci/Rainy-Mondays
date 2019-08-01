@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="css\main.css" />
     <Content Include="modify_books.aspx" />
+    <Content Include="resources\database_setup.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +92,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="resources\" />
+    <Folder Include="resources\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
