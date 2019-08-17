@@ -9,6 +9,11 @@ body {
     color: dimgrey;
     text-align: center;
 }
+.center{
+    display:inline-block;
+    text-align:center;
+}
+
 .subtitle{
     font-size:2em;
     color:dimgrey;
@@ -19,8 +24,11 @@ table{
 }
 td {
     width:30%;
+    text-align:center;
 }
-
+.icon{
+    height:65px;
+}
 .centerbox {
     background-color: aliceblue;
     color: black;
@@ -36,56 +44,18 @@ td {
 #main_container {
     background-color: aliceblue;
     color: black;
-    height:600px;
-    width: 1000px;
+    height:auto;
+    width: 88%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 9%;
     box-shadow: black 0px 5px 25px;
 }
 
 /* modify_books styling */
 
-#book_database_title {
-    text-align: center;
-}
-
-#main_table_container {
-    width: 600px;
-    margin: auto;
-    /*background-color: purple;*/
-}
-
-#search_books_container, #modify_books_container {
-    display: inline-block;
-    vertical-align: top;
-    height: 250px;
-}
-
-#search_books_table {
-    
-    top: -50px;
-    width: 300px;
-    margin: auto;
-    /*background-color: green;*/
-}
-
-#delete_container {
-    width: 175px;
-    margin: auto;
-    /*background-color: red;*/
-}
-
-#delete_books_table {
-    width: 125px;
-    left: 50px;
-    /*background-color: red;*/
-}
-
 #modify_books_table {
-    display: inline-block;
-    vertical-align: top;
-    width: 300px;
+    width: 400px;
     margin: auto;
 }
 
@@ -96,7 +66,7 @@ td {
 
 #gridview_container {
     width: 80%;
-    height: 200px;
+    height: 300px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;
@@ -106,8 +76,4 @@ td {
 #gridview_books {
     width: 100%;
     margin: auto;
-}
-
-.add_modify {
-    width: 200px;
 }

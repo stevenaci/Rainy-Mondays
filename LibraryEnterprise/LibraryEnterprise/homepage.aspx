@@ -5,11 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
     <link rel="stylesheet" href="css/main.css" />
     <style type="text/css">
         .auto-style1 {
             height: 26px;
+        }
+        .auto-style2 {
+            height: 684px;
+            margin-bottom: 0px;
+        }
+        .auto-style3 {
+            height: 50px;
         }
     </style>
 </head>
@@ -17,7 +23,7 @@
     <form id="form1" runat="server">
         <br />
         <br />
-        <div id="main_container">
+        <div id="main_container" class="auto-style2">
             <br />
             <table style="width:100%;">
                 <tr>
@@ -56,11 +62,11 @@
             <br />
             <table style="width:100%;">
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>
+                    <td class="auto-style3"></td>
+                    <td class="auto-style3">
                         <asp:Label ID="Label3" runat="server" CssClass="subtitle" Text="Account Management"></asp:Label>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style3"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
@@ -69,12 +75,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnemploy" runat="server" Text="View Employees" />
+                        <asp:Button ID="btnemploy" runat="server" Text="View Employees" OnClick="btnemploy_Click" CssClass="center" />
                     </td>
+                    <td>
+                        <asp:Image ID="Image1" runat="server" CssClass="icon" ImageUrl="~/resources/images/account.png" />
+                    </td>
+                    <td>
+                        <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="btnpatron" runat="server" Text="View Patrons" />
-                    </td>
+                        &nbsp;</td>
                 </tr>
             </table>
             <br />
@@ -87,23 +102,39 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>
-                        <asp:Button ID="btncheckout" runat="server" Text="Check Out" />
-                    </td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="btncheckin" runat="server" Text="Check In" />
+                        <asp:Image ID="Image2" runat="server" CssClass="icon" ImageUrl="~/resources/images/book.png" />
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="btncheckout" runat="server" Text="Check Out" OnClick="btncheckout_Click" CssClass="center" />
+                    </td>
+                    <td>
+                        <asp:Button ID="btnsearch" runat="server" CssClass="center" Text="Search Books" />
+                    </td>
+                    <td>
+                        <asp:Button ID="btncheckin" runat="server" Text="Check In" OnClick="btncheckin_Click" CssClass="center" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnadd" runat="server" Text="Add Book" />
+                        &nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="btnadd" runat="server" Text="Add Book" CssClass="center" />
                     </td>
                     <td>
-                        <asp:Button ID="btnupdate" runat="server" Text="Update Book" />
+                        <asp:Button ID="btnupdate" runat="server" Text="Update Book" OnClick="btnupdate_Click" CssClass="center" />
                     </td>
                     <td>
-                        <asp:Button ID="btndelete" runat="server" Text="Delete Book" />
+                        <asp:Button ID="btndelete" runat="server" Text="Delete Book" OnClick="btndelete_Click" CssClass="center" />
                     </td>
                 </tr>
             </table>

@@ -54,6 +54,12 @@ C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\ob
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.CopyComplete
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.dll
 C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.pdb
+C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.Properties.Resources.resources
+C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.GenerateResource.c e61bd01f190604f269787b9146eaec340dfcdded
+C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csprojAssemblyReference.cache
+C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.Properties.Resources.resources
+C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.GenerateResource.cache
+C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.CoreCompileInputs.cache
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\LibraryEnterprise.dll.config
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\LibraryEnterprise.dll
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\LibraryEnterprise.pdb
@@ -103,13 +109,6 @@ C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterpris
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\roslyn\vbc.rsp
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\roslyn\VBCSCompiler.exe
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csprojAssemblyReference.cache
-C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.CoreCompileInputs.cache
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.CopyComplete
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.dll
 C:\Users\steve\Documents\GitHub\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.pdb
-
-C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.Properties.Resources.resources
-C:\Users\Shawn\source\repos\Rainy-Mondays\LibraryEnterprise\LibraryEnterprise\obj\Debug\LibraryEnterprise.csproj.GenerateResource.c e61bd01f190604f269787b9146eaec340dfcdded
