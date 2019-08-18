@@ -103,13 +103,13 @@ namespace LibraryEnterprise {
         protected global::System.Web.UI.WebControls.Button btncheckout;
         
         /// <summary>
-        /// btnsearch control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsearch;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// btncheckin control.
@@ -119,6 +119,15 @@ namespace LibraryEnterprise {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btncheckin;
+        
+        /// <summary>
+        /// btnsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnsearch;
         
         /// <summary>
         /// btnupdate control.

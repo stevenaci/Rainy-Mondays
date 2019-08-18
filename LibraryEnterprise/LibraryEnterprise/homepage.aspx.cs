@@ -73,5 +73,10 @@ namespace LibraryEnterprise
             Session["redirect_URL"] = redirect_URL;
             Server.Transfer("error_page.aspx");
         }
+
+        protected void btncheckout_history_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

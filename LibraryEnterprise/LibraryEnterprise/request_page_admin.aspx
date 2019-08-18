@@ -51,7 +51,7 @@
             </table>
             <br />
             <br />
-            <div id="gridview_container">
+            <div id="gridview_container_large">
                 <asp:GridView ID="gridview_books" runat="server"></asp:GridView>
             </div>
         </div>

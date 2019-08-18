@@ -135,11 +135,19 @@ INSERT INTO genres VALUES
 INSERT INTO employees VALUES
 ('Shawn', 'Pudjo', 'spudjo@library.ca', 'admin', '(647)666-6666', '123 Fake Street', 'Owner'),
 ('Scott', 'Ritchie', 'sritchie@library.ca', 'admin', '(647)111-1111', '123 Real Drive', 'Owner'),
-('Steven', 'Carino', 'scarino@library.ca', 'admin', '(647)222-2222', '125 Fake Street', 'Owner');
+('Steven', 'Carino', 'scarino@library.ca', 'admin', '(647)222-2222', '125 Fake Street', 'Owner'),
+('Thao', 'Doan', 'tdoan@library.ca', 'admin', '(647)212-2245', '234 Saigon Drive', 'Librarian'),
+('Ban', 'S', 'bans@library.ca', 'admin', '(416)123-4567', '448 Korea Street', 'Library Technician'),
+('Dario', 'Guiao', 'dguiao@library.ca', 'admin', '(416)112-1244', '12 Kawhi Crescent', 'Library Assistant');
 
 INSERT INTO patrons VALUES
 ('Sach', 'Dhanota', 'sdha@person.ca', '12345', '(647)565-1212', '123 Stargazer Road', 0),
-('Casey', 'Byrne', 'cbyrne@wow.ca', '54321', '(647)123-4567', '123 Moongazer Drive', 500.25);
+('Casey', 'Byrne', 'cbyrne@wow.ca', '54321', '(647)123-4567', '123 Moongazer Drive', 500.25),
+('Michael', 'Smith', 'smith@wow.ca', '54321', '(647)123-4555', '155 Sun Drive', 0),
+('Dennis', 'Mitchells', 'mitchell@wow.ca', 'abc', '(647)654-4532', '111 Empire Drive', 0),
+('Sofia', 'Wytchwood', 'wytch@gmail.ca', 'qweqwe', '(647)111-9874', '52 Ice Crescent', 25.00),
+('Buffy', 'Summers', 'summers@slayer.ca', 'haha', '(647)252-1212', '25 Whaley Drive', .25),
+('Solomon', 'Shapiro', 'sshapiro@aaa.ca', '555', '(647)441-4568', '987 Book Avenue', 10.25);
 
 INSERT INTO books VALUES
 ( '978067697063', 'Salman Rushdie', 'The Satanic Verses', 18, 'English', '1988', 5),
@@ -156,13 +164,18 @@ INSERT INTO books VALUES
 ( '9781524763138', 'Michelle Obama', 'Becoming', 4, 'English', '2018', 5);
 
 INSERT INTO checkouts VALUES
-(0, 1, '2019-07-12T09:20:12', '2019-07-31T15:02:44'),
-(0, 2, '2019-07-12T09:20:12', NULL),
-(1, 0, '2019-07-25T11:42:19', NULL);
+(0, 1,  '2019-07-12T09:20:12', '2019-07-31T15:02:44'),
+(0, 2,  '2019-07-12T09:20:12', NULL),
+(1, 0,  '2019-07-25T11:42:19', NULL),
+(1, 11, '2019-07-27T10:32:14', NULL),
+(3, 9,  '2019-07-28T09:20:12', '2019-07-31T15:02:44'),
+(4, 10, '2019-07-30T09:55:12', '2019-08-05T15:02:44'),
+(5, 5,  '2019-08-10T10:21:12', NULL),
+(5, 6,  '2019-08-10T10:22:12', NULL),
+(5, 7,  '2019-08-10T10:23:12', NULL),
+(6, 11, '2019-07-12T09:20:12', NULL);
 
 INSERT INTO requests VALUES
 (1, '9780765311788', 'Brandon Sanderson', 'Mistborn: The Final Empire', 18, 'English', '2006'),
 (1, '9780765316882', 'Brandon Sanderson', 'Mistborn: The Well of Ascension', 18, 'English', '2007'),
 (1, '9780765316899', 'Brandon Sanderson', 'Mistborn: The Hero of Ages', 18, 'English', '2008');
-
-SELECT * FROM genres;

@@ -26,7 +26,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee"></asp:Label>
+                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee"></asp:Label><br />
                         <asp:Label ID="Label3" runat="server" CssClass="title" Text="Log-in"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
@@ -75,8 +75,6 @@
                 </tr>
             </table>
         </div>
-        <p>
-            &nbsp;</p>
     </form>
 </body>
 </html>

@@ -12,7 +12,7 @@ body {
 .indxbtn {
     background-color: #a6dff5;
     border-radius: 5px;
-    width: 30%;
+    width: 50%;
 }
 
 .rtn {
@@ -67,7 +67,7 @@ td {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 9%;
+    margin-top: 3%;
     box-shadow: black 0px 5px 25px;
 }
 
@@ -75,9 +75,11 @@ td {
     height: 65px;
 }
 
-
+#checkout_container {
+    width: 500px;
+    margin: auto;
+}
 /* modify_books styling */
-
 #modify_books_table {
     width: 400px;
     margin: auto;
@@ -90,15 +92,23 @@ td {
 
 #gridview_container {
     width: 80%;
-    height: 300px;
+    height: 250px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;
 }
 
-#gridview_container_patrons {
+#gridview_container_large {
     width: 80%;
-    height: 225px;
+    height: 400px;
+    overflow: scroll;
+    border: 1px solid black;
+    margin: auto;
+}
+
+#gridview_container_small {
+    width: 80%;
+    height: 200px;
     overflow: scroll;
     border: 1px solid black;
     margin: auto;

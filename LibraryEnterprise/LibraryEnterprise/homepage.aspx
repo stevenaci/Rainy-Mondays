@@ -68,10 +68,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center btn" PostBackUrl="~/display_patrons.aspx" style="height: 29px" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center" />
-                    </td>
+                    </td>       
                 </tr>
                 <tr>
                     <td>
@@ -80,14 +77,6 @@
                     <td>
                         &nbsp;</td>
                 </tr>
-                <%--                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <asp:Button ID="addpatron" runat="server" OnClick="addpatron_Click" Text="Add a Patron" />
-                    </td>
-                </tr>--%>
             </table>
             <br />
             <table style="width:100%;">
@@ -107,13 +96,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btncheckout" runat="server" Text="Check Out" OnClick="btncheckout_Click" CssClass="center btn" PostBackUrl="~/checkout.aspx" />
+                        <asp:Button ID="btncheckout" runat="server" Text="Check Out" OnClick="btncheckout_Click" CssClass="center btn" PostBackUrl="~/checkout.aspx" Width="139px" />
                     </td>
                     <td>
-                        <asp:Button ID="btnsearch" runat="server" CssClass="center btn" Text="Book Database" PostBackUrl="~/books_database_employees.aspx" OnClick="btnsearch_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="Check Out History" OnClick="btncheckout_history_Click" CssClass="center btn" PostBackUrl="~/checkout_history.aspx" Width="182px" />
                     </td>
                     <td>
-                        <asp:Button ID="btncheckin" runat="server" Text="Check In" OnClick="btncheckin_Click" CssClass="center btn" PostBackUrl="~/checkin.aspx" />
+                        <asp:Button ID="btncheckin" runat="server" Text="Check In" OnClick="btncheckin_Click" CssClass="center btn" PostBackUrl="~/checkin.aspx" Width="133px" />
                     </td>
                 </tr>
                 <tr>
@@ -125,7 +114,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <%--<asp:Button ID="btnadd" runat="server" Text="Add Book" CssClass="center" />--%>
+                        <asp:Button ID="btnsearch" runat="server" CssClass="center btn" Text="Book Database" PostBackUrl="~/books_database_employees.aspx" OnClick="btnsearch_Click" Width="139px" />
                     </td>
                     <td>
                         <asp:Button ID="btnupdate" runat="server" Text="Patron Requests" CssClass="center btn" PostBackUrl="~/request_page_admin.aspx" />

@@ -68,7 +68,7 @@
                     </td>
                 </tr>
             </table>
-            <div id="gridview_container_patrons">
+            <div id="gridview_container_small">
                 <asp:GridView ID="gridview_books" runat="server"></asp:GridView>
             </div>
         </div>
