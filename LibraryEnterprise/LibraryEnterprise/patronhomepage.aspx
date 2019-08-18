@@ -21,12 +21,16 @@
             height: 156px;
         }
 
+        .auto-style3 {
+            height: 64px;
+        }
+
     </style>
 </head>
 <body>
     <div id="main_container">
     <form id="form1" runat="server">
-        <div>
+
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style1"></td>
@@ -38,31 +42,34 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        &nbsp;</td>
+                        <asp:Label ID="lbl1" runat="server"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>Books must be returned after 14 days! Outstanding books will cost a fee of $0.25 per day.</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
-        </div>
+
         <table style="width:100%;">
             <tr>
-                <td class="auto-style2">All Books Owed</td>
-                <td class="auto-style2">Overdue Books</td>
-                <td class="auto-style2">Total Balance Owed:</td>
+                <td class="auto-style3">All Books Owed</td>
+                <td class="auto-style3">Overdue Books<br />
+                </td>
+                <td class="auto-style3"></td>
             </tr>
             <tr>
                 <td class="auto-style2">
                     <asp:GridView ID="gv1" runat="server">
                     </asp:GridView>
                 </td>
-                <td class="auto-style2">&nbsp;<asp:GridView ID="gv2" runat="server">
+                <td class="auto-style2"><asp:GridView ID="gv2" runat="server">
                     </asp:GridView>
                 </td>
                 <td class="auto-style2">
+                    Total Balance Owed: 
                     <asp:Label ID="lblbal" runat="server"></asp:Label>
                 </td>
             </tr>

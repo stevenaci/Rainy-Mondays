@@ -14,6 +14,7 @@ namespace LibraryEnterprise
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbl1.Text = "Welcome: " + Session["patron_id"];
             
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
 
