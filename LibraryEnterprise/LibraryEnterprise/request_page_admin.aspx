@@ -13,6 +13,9 @@
         <br />
         <div id="main_container">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/homepage.aspx" Text="Return" CssClass="btn" />
+            <br />
             <h2 id="book_database_title">Book Request Page</h2>
             <table id="main_table_container">
                 <tr>
@@ -37,7 +40,7 @@
 
                                 </td>
                                 <td>
-                                    <asp:Button ID="btn_delete" CssClass="add_modify" runat="server" Text="Delete" OnClick="btn_delete_Click"/>
+                                    <asp:Button ID="btn_delete" CssClass="add_modify btn" runat="server" Text="Delete" OnClick="btn_delete_Click"/>
                                 </td>
    <%--                             <td>
                                     <asp:Button ID="btn_add" CssClass="add_modify" runat="server" Text="Complete Request" OnClick="btn_add_Click"/>

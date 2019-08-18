@@ -24,8 +24,13 @@
     </style>
 </head>
 <body>
+    <br />
+    <br />
     <div id="main_container">
     <form id="form1" runat="server">
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="logout" runat="server" OnClick="logout_Click" PostBackUrl="~/index.aspx" Text="Logout" CssClass="btn" />
         <div>
             <table style="width:100%;">
                 <tr>
@@ -69,10 +74,10 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style2">
-                        <asp:Button ID="Button1" runat="server" Text="Search Library" OnClick="Button1_Click" PostBackUrl="~/books_database_patrons.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="Search Library" OnClick="Button1_Click" PostBackUrl="~/books_database_patrons.aspx" CssClass="btn" />
                 </td>
                 <td class="auto-style2">
-                    <asp:Button ID="Button2" runat="server" Text="Request Book" PostBackUrl="~/request_page.aspx" />
+                    <asp:Button ID="Button2" runat="server" Text="Request Book" PostBackUrl="~/request_page.aspx" CssClass="btn" />
                 </td>
             </tr>
             <tr>

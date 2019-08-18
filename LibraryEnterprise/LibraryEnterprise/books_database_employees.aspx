@@ -13,8 +13,12 @@
         <br />
         <div id="main_container">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/homepage.aspx" Text="Return" CssClass="btn" />
+            <br />
             <h2 id="book_database_title">Book Database</h2>
             <table id="main_table_container">
+
                 <tr>
                     <td>
                         <div id="search_books_container">
@@ -59,7 +63,7 @@
                         <tr>
                             <td colspan="2">
                                 <div id="btn_search_container">
-                                    <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" />
+                                    <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" CssClass="btn" />
                                 </div>
                             </td>
                         </tr>
@@ -81,7 +85,7 @@
                                                 <asp:TextBox ID="tb_delete_id" runat="server"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:Button ID="Button1" runat="server" Text="Delete" OnClick="btn_delete_Click" />
+                                                <asp:Button ID="Button1" runat="server" Text="Delete" OnClick="btn_delete_Click" CssClass="btn" />
                                             </td>
                                         </tr>
                                     </table>
@@ -105,7 +109,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tb_modify_id" runat="server" Width="150px"></asp:TextBox>
-                                    <asp:Button ID="btn_pull_info" runat="server" OnClick="btn_pull_info_Click" Text="Pull" />
+                                    <asp:Button ID="btn_pull_info" runat="server" OnClick="btn_pull_info_Click" Text="Get" CssClass="btn" />
                                 </td>
                             </tr>
                             <tr>
@@ -167,10 +171,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button ID="btn_update" runat="server" Text="Update" OnClick="btn_update_Click"/>
+                                    <asp:Button ID="btn_update" runat="server" Text="Update" OnClick="btn_update_Click" CssClass="btn"/>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btn_add" CssClass="add_modify" runat="server" Text="Add" OnClick="btn_add_Click"/>
+                                    <asp:Button ID="btn_add" CssClass="add_modify btn" runat="server" Text="Add" OnClick="btn_add_Click"/>
                                 </td>
                             </tr>
                         </table>

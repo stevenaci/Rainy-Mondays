@@ -11,7 +11,17 @@ namespace LibraryEnterprise
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["employee_id"] == null)
+            {
+                if (Session["patron_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "patronhomepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "loginpage.aspx");
+                }
+            }
 
         }
 
@@ -54,6 +64,14 @@ namespace LibraryEnterprise
         protected void logout_Click(object sender, EventArgs e)
         {
             Session.Clear();
+        }
+
+        protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
+        {
+            Session["error_title"] = error_title;
+            Session["error_message"] = error_message;
+            Session["redirect_URL"] = redirect_URL;
+            Server.Transfer("error_page.aspx");
         }
     }
 }

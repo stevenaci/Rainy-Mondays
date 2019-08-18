@@ -13,6 +13,9 @@
         <br />
         <div id="main_container">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/patronhomepage.aspx" Text="Return" CssClass="btn" />
+            <br />
             <h2 id="book_database_title">Request a Book</h2>
             <table id="main_table_container">
                 <tr>
@@ -77,7 +80,7 @@
                                 <td>
                                     &nbsp;</td>
                                 <td>
-                                    <asp:Button ID="btn_add" CssClass="add_modify" runat="server" Text="Add" OnClick="btn_add_Click"/>
+                                    <asp:Button ID="btn_add" CssClass="btn" runat="server" Text="Add" OnClick="btn_add_Click"/>
                                 </td>
                             </tr>
                         </table>

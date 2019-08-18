@@ -4,9 +4,10 @@ body {
     background-color: aliceblue;
 }
 
-button {
+.btn {
     background-color: aqua;
-    box-shadow: slateblue 10px 10px inset;
+    box-shadow: slateblue 2px 2px inset;
+    border-radius: 5px;
 }
 
 .title {
@@ -119,11 +120,19 @@ td {
     margin: auto;
 }
 
+#gridview_container_patrons {
+    width: 80%;
+    height: 225px;
+    overflow: scroll;
+    border: 1px solid black;
+    margin: auto;
+}
 
 #gridview_books {
     width: 100%;
     margin: auto;
 }
+
 
 .add_modify {
     width: 200px;

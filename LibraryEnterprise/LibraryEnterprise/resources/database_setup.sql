@@ -145,7 +145,15 @@ INSERT INTO books VALUES
 ( '978067697063', 'Salman Rushdie', 'The Satanic Verses', 18, 'English', '1988', 5),
 ( '9780393609097', 'Neil Gaiman', 'Norse Mythology', 18, 'English', '2017', 3),
 ( '9780062316097', 'Yuval Harari', 'Sapiens', 44, 'Hebrew', '2011', 3),
-( '9780500251942', 'John Haywood', 'Viking: The Norse Warriors Manual ', 44, 'English', '2013', 2);
+( '9780500251942', 'John Haywood', 'Viking: The Norse Warriors Manual ', 44, 'English', '2013', 2),
+( '37505041', 'Ken Kesey', 'One Flew Over the Cuckoos Nest', 15, 'English', '1963', 2),
+( '0441569560', 'William Gibson', 'Neuromancer', 39, 'English', '1984', 2),
+( '0575036966', 'William Gibson', 'Count Zero', 39, 'English', '1986', 1),
+( '0553052500', 'William Gibson', 'Mona Lisa Overdrive', 39, 'English', '1988', 1),
+( '0670813028', 'Stephen King', 'It', 25, 'English', '1986', 2),
+( '9780385182447', 'Stephen King', 'Pet Sematary', 25, 'English', '1983', 1),
+( '9781590302255', 'Sun Tzu', 'The Art of War', 43, 'Chinese', '500', 1),
+( '9781524763138', 'Michelle Obama', 'Becoming', 4, 'English', '2018', 5);
 
 INSERT INTO checkouts VALUES
 (0, 1, '2019-07-12T09:20:12', '2019-07-31T15:02:44'),
@@ -156,3 +164,5 @@ INSERT INTO requests VALUES
 (1, '9780765311788', 'Brandon Sanderson', 'Mistborn: The Final Empire', 18, 'English', '2006'),
 (1, '9780765316882', 'Brandon Sanderson', 'Mistborn: The Well of Ascension', 18, 'English', '2007'),
 (1, '9780765316899', 'Brandon Sanderson', 'Mistborn: The Hero of Ages', 18, 'English', '2008');
+
+SELECT * FROM genres;

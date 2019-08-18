@@ -13,6 +13,9 @@
         <br />
         <div id="main_container">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/patronhomepage.aspx" Text="Return" CssClass="btn" />
+            <br />
             <h2 id="book_database_title">Book Database</h2>
             <table id="main_table_container">
                 <tr>
@@ -58,7 +61,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div id="btn_search_container">
-                                            <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" />
+                                            <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" CssClass="btn" />
                                         </div>
                                     </td>
                                 </tr>  
@@ -67,9 +70,7 @@
                     </td>
                 </tr>
             </table>
-            <br />
-            <br />
-            <div id="gridview_container">
+            <div id="gridview_container_patrons">
                 <asp:GridView ID="gridview_books" runat="server"></asp:GridView>
             </div>
         </div>

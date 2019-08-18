@@ -15,7 +15,7 @@ namespace LibraryEnterprise
         string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session.Clear();
             String query = "select DATEDIFF(day, l.lastaccessed, CURRENT_TIMESTAMP) from dbo.lastaccessed l";
             int delta = 0;
             // find the difference between dates

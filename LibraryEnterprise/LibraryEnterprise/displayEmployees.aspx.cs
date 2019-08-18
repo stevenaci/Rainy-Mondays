@@ -16,11 +16,16 @@ namespace LibraryEnterprise
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["employee_id"] = 0; // temp
-
             if (Session["employee_id"] == null)
             {
-                redirect_to_error_page("ERROR 404", "You must be an admin to view this page", "index.aspx");
+                if (Session["patron_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "patronhomepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "loginpage.aspx");
+                }
             }
 
             if (!IsPostBack)

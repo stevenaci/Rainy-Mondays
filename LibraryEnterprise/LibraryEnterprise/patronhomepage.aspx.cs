@@ -14,7 +14,18 @@ namespace LibraryEnterprise
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["patron_id"] == null)
+            {
+                if (Session["employee_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Please log in to an patron account to continue.", "homepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Please log in to an patron account to continue.", "patronloginpage.aspx");
+                }
+            }
+
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
 
             int p_id = 0;
@@ -70,6 +81,19 @@ namespace LibraryEnterprise
         {
             // 
             Response.Redirect("modify_books.aspx");
+        }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+        }
+
+        protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
+        {
+            Session["error_title"] = error_title;
+            Session["error_message"] = error_message;
+            Session["redirect_URL"] = redirect_URL;
+            Server.Transfer("error_page.aspx");
         }
     }
 }

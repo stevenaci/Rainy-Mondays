@@ -16,7 +16,14 @@ namespace LibraryEnterprise
         {
             if (Session["patron_id"] == null)
             {
-                redirect_to_error_page("403 ERROR", "Please log in to an patron account to continue.", "loginpage.aspx");
+                if (Session["employee_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Please log in to an patron account to continue.", "homepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Please log in to an patron account to continue.", "patronloginpage.aspx");
+                }  
             }
 
             if (!IsPostBack)

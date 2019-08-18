@@ -90,7 +90,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style1">
-                    <asp:Button ID="Button1" runat="server" Text="Register" OnClick="Button1_Click" />
+                    <asp:Button ID="Button1" runat="server" Text="Register" OnClick="Button1_Click" CssClass="btn" />
                 </td>
                 <td>&nbsp;</td>
             </tr>

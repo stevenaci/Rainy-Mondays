@@ -36,7 +36,7 @@ namespace LibraryEnterprise
                 {
                     while (reader.Read())
                     {
-                        Session["patron_id"] = reader[0].ToString();
+                        Session["patron_id"] = reader[1].ToString() + " " + reader[2].ToString();
                         Session["balance"] = reader.GetDecimal(reader.GetOrdinal("account_balance"));
                     }
                 }

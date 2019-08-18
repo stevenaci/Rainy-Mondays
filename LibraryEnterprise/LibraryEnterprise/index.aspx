@@ -21,14 +21,14 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="btn1" runat="server" OnClick="btn1_Click" Text="Employee Login" />
+                        <asp:Button ID="btn1" runat="server" OnClick="btn1_Click" Text="Employee Login" CssClass="btn" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="btn2" runat="server" OnClick="btn2_Click" Text="Patron Login" />
+                        <asp:Button ID="btn2" runat="server" OnClick="btn2_Click" Text="Patron Login" CssClass="btn" />
                         <br />
                         <asp:Label ID="debug" runat="server"></asp:Label>
                     </td>
