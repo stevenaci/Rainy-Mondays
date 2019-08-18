@@ -74,12 +74,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
+                <t&nbsp;</td>
                 <td class="auto-style2">
-                        <asp:Button ID="Button1" runat="server" Text="Search Library" OnClick="Button1_Click" PostBackUrl="~/books_database_patrons.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="Search Library" OnClick="Button1_Click" PostBackUrl="~/books_database_patrons.aspx" CssClass="btn" />
                 </td>
                 <td class="auto-style2">
-                    <asp:Button ID="Button2" runat="server" Text="Request Book" PostBackUrl="~/request_page.aspx" />
+                    <asp:Button ID="Button2" runat="server" Text="Request Book" PostBackUrl="~/request_page.aspx" CssClass="btn" />
                 </td>
             </tr>
             <tr>

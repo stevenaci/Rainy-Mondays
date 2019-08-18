@@ -4,9 +4,17 @@ body {
     background-color: aliceblue;
 }
 
-button {
-    background-color: aqua;
-    box-shadow: slateblue 10px 10px inset;
+.btn {
+    background-color: #a6dff5;
+}
+
+.indxbtn {
+    background-color: #a6dff5;
+    width: 30%;
+}
+
+.rtn {
+    background-color: #b200ff;
 }
 
 .title {

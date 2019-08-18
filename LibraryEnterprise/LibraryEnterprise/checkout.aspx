@@ -14,9 +14,10 @@
     </style>
 </head>
 <body>
+            <div id="main_container">
     <form id="form1" runat="server">
-        <div id="main_container">
-            <asp:Label ID="Label1" runat="server" Text="Checkout"></asp:Label>
+
+            <asp:Label ID="Label1" runat="server" Text="Checkout" CssClass="subtitle"></asp:Label>
             <br />
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,7 +50,7 @@
                        
                     </td>
                     <td>
-            <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="Button1_Click" />
+            <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="Button1_Click" CssClass="btn" />
                     </td>
                 </tr>
                 <tr>
@@ -89,7 +90,7 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="btncheck" runat="server" Text="Checkout" OnClick="btncheck_Click" />
+                        <asp:Button ID="btncheck" runat="server" Text="Checkout" OnClick="btncheck_Click" CssClass="btn" />
                     </td>
                 </tr>
                 <tr>
@@ -109,7 +110,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
             <br />
-        </div>
     </form>
+                        </div>
 </body>
 </html>
