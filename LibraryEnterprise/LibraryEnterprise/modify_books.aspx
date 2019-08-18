@@ -26,7 +26,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="lb_isbn" runat="server" Text="ISBN"></asp:Label>
+                                <asp:Label ID="lb_isbn" runat="server" Text="ISBM"></asp:Label>
                             </td>
                             <td>
                                 <asp:TextBox ID="tb_isbn" runat="server"></asp:TextBox>
@@ -104,12 +104,13 @@
                                     <asp:Label ID="Label2" runat="server" Text="Modify ID:"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tb_modify_id" CssClass="add_modify" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tb_modify_id" runat="server" Width="150px"></asp:TextBox>
+                                    <asp:Button ID="btn_pull_info" runat="server" OnClick="btn_pull_info_Click" Text="Pull" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="Label3" runat="server" Text="ISBN:"></asp:Label>
+                                    <asp:Label ID="Label3" runat="server" Text="ISBM:"></asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tb_isbm3" CssClass="add_modify" runat="server"></asp:TextBox>
@@ -153,7 +154,7 @@
                                     <asp:Label ID="Label8" runat="server" Text="Year:"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tb_year3" CssClass="add_modify" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tb_year3" CssClass="add_modify" runat="server" TextMode="Number"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

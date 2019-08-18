@@ -1,10 +1,18 @@
 USE library_database;
 
+DROP TABLE IF EXISTS requests;
 DROP TABLE IF EXISTS checkouts;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS patrons;
+DROP TABLE IF EXISTS lastaccessed;
+
+CREATE TABLE lastaccessed (
+	lastaccessed DATETIME,
+	singleton INT
+)
+INSERT INTO lastaccessed VALUES(CURRENT_TIMESTAMP,0);
 
 CREATE TABLE genres (
 	genre_id INT NOT NULL IDENTITY(0,1),
@@ -17,6 +25,7 @@ CREATE TABLE employees (
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL,
 	phone VARCHAR(20) NOT NULL,
 	address VARCHAR(50) NOT NULL,
 	role VARCHAR(20) NOT NULL
@@ -28,6 +37,7 @@ CREATE TABLE patrons (
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL,
 	phone VARCHAR(20) NOT NULL,
 	address VARCHAR(50) NOT NULL,
 	account_balance DECIMAL(18,2) NOT NULL
@@ -56,6 +66,20 @@ CREATE TABLE checkouts (
 	PRIMARY KEY (checkout_id),
 	FOREIGN KEY (patron_id) REFERENCES patrons(patron_id),
 	FOREIGN KEY (book_id) REFERENCES books(book_id),
+)
+
+CREATE TABLE requests 
+(
+	request_id INT NOT NULL IDENTITY(0,1),
+	patron_id INT NOT NULL,
+	isbn VARCHAR(20) NOT NULL,
+	author VARCHAR(50) NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	genre_id INT NOT NULL,
+	language VARCHAR(50) NOT NULL,
+	year INT NOT NULL,
+	FOREIGN KEY (patron_id) REFERENCES patrons(patron_id),
+	FOREIGN KEY (genre_id) REFERENCES genres(genre_id)
 )
 
 INSERT INTO genres VALUES
@@ -109,13 +133,13 @@ INSERT INTO genres VALUES
 ('Young Adult');
 
 INSERT INTO employees VALUES
-('Shawn', 'Pudjo', 'spudjo@library.ca', '(647)666-6666', '123 Fake Street', 'Owner'),
-('Scott', 'Ritchie', 'sritchie@library.ca', '(647)111-1111', '123 Real Drive', 'Owner'),
-('Steven', 'Carino', 'scarino@library.ca', '(647)222-2222', '125 Fake Street', 'Owner');
+('Shawn', 'Pudjo', 'spudjo@library.ca', 'admin', '(647)666-6666', '123 Fake Street', 'Owner'),
+('Scott', 'Ritchie', 'sritchie@library.ca', 'admin', '(647)111-1111', '123 Real Drive', 'Owner'),
+('Steven', 'Carino', 'scarino@library.ca', 'admin', '(647)222-2222', '125 Fake Street', 'Owner');
 
 INSERT INTO patrons VALUES
-('Sach', 'Dhanota', 'sdha@person.ca', '(647)565-1212', '123 Stargazer Road', 0),
-('Casey', 'Byrne', 'cbyrne@wow.ca', '(647)123-4567', '123 Moongazer Drive', 500.25);
+('Sach', 'Dhanota', 'sdha@person.ca', '12345', '(647)565-1212', '123 Stargazer Road', 0),
+('Casey', 'Byrne', 'cbyrne@wow.ca', '54321', '(647)123-4567', '123 Moongazer Drive', 500.25);
 
 INSERT INTO books VALUES
 ( '978067697063', 'Salman Rushdie', 'The Satanic Verses', 18, 'English', '1988', 5),
@@ -127,3 +151,8 @@ INSERT INTO checkouts VALUES
 (0, 1, '2019-07-12T09:20:12', '2019-07-31T15:02:44'),
 (0, 2, '2019-07-12T09:20:12', NULL),
 (1, 0, '2019-07-25T11:42:19', NULL);
+
+INSERT INTO requests VALUES
+(1, '9780765311788', 'Brandon Sanderson', 'Mistborn: The Final Empire', 18, 'English', '2006'),
+(1, '9780765316882', 'Brandon Sanderson', 'Mistborn: The Well of Ascension', 18, 'English', '2007'),
+(1, '9780765316899', 'Brandon Sanderson', 'Mistborn: The Hero of Ages', 18, 'English', '2008');

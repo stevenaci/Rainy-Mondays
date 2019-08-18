@@ -4,11 +4,22 @@ body {
     background-color: aliceblue;
 }
 
+button {
+    background-color: aqua;
+    box-shadow: slateblue 10px 10px inset;
+}
+
 .title {
     font-size: 3em;
     color: dimgrey;
     text-align: center;
 }
+
+.center {
+    display: inline-block;
+    text-align: center;
+}
+
 .subtitle{
     font-size:2em;
     color:dimgrey;
@@ -18,7 +29,8 @@ table{
     border-color:slateblue;
 }
 td {
-    width:30%;
+    width: 30%;
+    text-align: center;
 }
 
 .centerbox {
@@ -43,6 +55,11 @@ td {
     margin-top: 40px;
     box-shadow: black 0px 5px 25px;
 }
+
+.icon {
+    height: 65px;
+}
+
 
 /* modify_books styling */
 
@@ -111,3 +128,11 @@ td {
 .add_modify {
     width: 200px;
 }
+
+/* Error page styling */
+
+#error_title, #error_message {
+    text-align: center;
+}
+
+

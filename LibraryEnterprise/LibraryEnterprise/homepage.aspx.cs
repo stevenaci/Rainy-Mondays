@@ -12,6 +12,43 @@ namespace LibraryEnterprise
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
+        }
+
+        protected void btnemploy_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("displayEmployees.aspx");
+        }
+
+        protected void btnpatron_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("display_patrons.aspx");
+        }
+
+        protected void btncheckout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("checkout.aspx");
+        }
+
+        protected void btncheckin_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("checkin.aspx");
+        }
+
+        protected void btndelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void addpatron_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("registration.aspx");
+        }
+
+        protected void btnsearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
