@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace LibraryEnterprise
 {
-    public partial class modify_books : System.Web.UI.Page
+    public partial class books_database_employees : System.Web.UI.Page
     {
         // The default select query for retrieving book data
         // Searching will concatenate a WHERE condition at the end
@@ -22,6 +22,18 @@ namespace LibraryEnterprise
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["employee_id"] == null)
+            {
+                if (Session["patron_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "patronhomepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "loginpage.aspx");
+                }
+            }
+
             if (!IsPostBack)
             {
                 get_gridview_data(select_query);
@@ -39,12 +51,9 @@ namespace LibraryEnterprise
             System.Diagnostics.Debug.Write(query);
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
             using (DataTable data_table = new DataTable())
             {
-                command.Connection = connection;
-                adapter.SelectCommand = command;
                 data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
                 adapter.Fill(data_table);
                 gridview_books.DataSource = data_table;
@@ -78,52 +87,14 @@ namespace LibraryEnterprise
                 multiple_conditions = add_where_conditions("title", title, multiple_conditions);
                 multiple_conditions = add_where_conditions("year", year, multiple_conditions);
 
-
-
-                //if (isbn != "")
-                //{
-                //    if (multiple_conditions)
-                //    {
-                //        select_query += " AND ";
-                //    }
-                //    select_query += "isbn LIKE '%" + isbn + "%' ";
-                //    multiple_conditions = true;
-                //}
-
-                //if (author != "")
-                //{
-                //    if (multiple_conditions)
-                //    {
-                //        select_query += " AND ";
-                //    }
-                //    select_query += "author LIKE '%" + author + "%' ";
-                //    multiple_conditions = true;
-                //}
-
-                //if (title != "")
-                //{
-                //    if (multiple_conditions)
-                //    {
-                //        select_query += " AND ";
-                //    }
-                //    select_query += "title LIKE '%" + title + "%' ";
-                //    multiple_conditions = true;
-                //}
-
-                //if (year != "")
-                //{
-                //    if (multiple_conditions)
-                //    {
-                //        select_query += " AND ";
-                //    }
-                //    select_query += "year = " + year + " ";
-                //    multiple_conditions = true;
-                //}
-
                 get_gridview_data(select_query);
             }
         }
 
+        /*
+         * Sets data for genre dropdown
+         *
+         */
         private void get_genre_data()
         {
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
@@ -201,19 +172,11 @@ namespace LibraryEnterprise
                 string language = tb_language3.Text.ToString().Trim();
                 int year = Convert.ToInt32(tb_year3.Text.ToString().Trim());
                 int quantity = Convert.ToInt32(tb_quantity3.Text.ToString().Trim());
-
                 int genre_id = get_genre_id(genre);
-                bool duplicate_isbn = check_duplicate_isbn(isbn);
-                if (genre_id >= 0 && !duplicate_isbn)
-                {
-                    update_book(book_id, isbn, author, title, genre_id, language, year, quantity);
-                }
-                else
-                {
-                    System.Diagnostics.Debug.Write("Genre not found");
-                }
+                //bool duplicate_isbn = check_duplicate_isbn(isbn);
+                //bool same_isbm = check_same_isbm(book_id, isbn);
 
-
+                update_book(book_id, isbn, author, title, genre_id, language, year, quantity);
             }
         }
 
@@ -395,6 +358,35 @@ namespace LibraryEnterprise
 
         /*
          * Shawn:
+         * Used to convert int genre_id into string genre_name 
+         */
+        protected string get_genre_name(int genre_id)
+        {
+            string genre_name = "Test";
+            string query = "SELECT genre_name FROM genres WHERE genre_id = @genre_id;";
+            System.Diagnostics.Debug.Write(genre_id);
+
+            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand(query))
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@genre_id", genre_id);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    genre_name = reader[0].ToString();
+                }
+                reader.Close(); // Close reader
+                connection.Close();
+            }
+            System.Diagnostics.Debug.Write(genre_name);
+            return genre_name;
+        }
+
+        /*
+         * Shawn:
          * Checks for duplicate ISBN when adding or updating
          * 
          */
@@ -424,6 +416,34 @@ namespace LibraryEnterprise
             return duplicate_found;
         }
 
+        protected bool check_same_isbm(int book_id, string isbm)
+        {
+            bool same_isbm = false;
+            //System.Diagnostics.Debug.Write(genre_name);
+            string query = "SELECT isbn FROM books WHERE book_id = @book_id;";
+            System.Diagnostics.Debug.Write(query);
+
+            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand(query))
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@book_id", book_id);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == isbm)
+                    {
+                        same_isbm = true;
+                    }
+                }
+                reader.Close(); // Close reader
+                connection.Close();
+            }
+            return same_isbm;
+        }
+
         /*
          * Shawn:
          * For updating, checks if the ISBN is the same as before
@@ -433,11 +453,52 @@ namespace LibraryEnterprise
             bool isbm = false;
             return isbm;
         }
+
+
+        protected void btn_pull_info_Click(object sender, EventArgs e)
+        {
+            if (tb_modify_id.Text != "")
+            {
+                int book_id = Convert.ToInt32(tb_modify_id.Text.ToString());
+                pull_book_info(book_id);
+            }
+
+        }
+
+        protected void pull_book_info(int book_id)
+        {
+            string query = "SELECT * FROM books WHERE book_id = @book_id;";
+            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@book_id", book_id);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        tb_isbm3.Text = reader[1].ToString();
+                        tb_author3.Text = reader[2].ToString();
+                        tb_title3.Text = reader[3].ToString();
+                        dd_genre.ClearSelection();
+                        dd_genre.SelectedValue = get_genre_name(Convert.ToInt32(reader[4]));
+                        tb_language3.Text = reader[5].ToString();
+                        tb_year3.Text = reader[6].ToString();
+                        tb_quantity3.Text = reader[7].ToString();
+
+                    }
+                }
+                connection.Close();
+            }
+        }
+
+        protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
+        {
+            Session["error_title"] = error_title;
+            Session["error_message"] = error_message;
+            Session["redirect_URL"] = redirect_URL;
+            Server.Transfer("error_page.aspx");
+        }
     }
 }
-
-
-
- 
- 
- 

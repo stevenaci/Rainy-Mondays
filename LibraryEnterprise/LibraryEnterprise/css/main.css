@@ -4,14 +4,36 @@ body {
     background-color: aliceblue;
 }
 
+.btn {
+    background-color: #a6dff5;
+    border-radius: 5px;
+}
+
+.indxbtn {
+    background-color: #a6dff5;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.rtn {
+    background-color: #b200ff;
+    border-radius: 5px;
+}
+
 .title {
     font-size: 3em;
     color: dimgrey;
     text-align: center;
 }
-.center{
-    display:inline-block;
-    text-align:center;
+
+.title2 {
+    color: dimgrey;
+    text-align: center;
+}
+
+.center {
+    display: inline-block;
+    text-align: center;
 }
 
 .subtitle{
@@ -23,11 +45,8 @@ table{
     border-color:slateblue;
 }
 td {
-    width:30%;
-    text-align:center;
-}
-.icon{
-    height:65px;
+    width: 30%;
+    text-align: center;
 }
 .centerbox {
     background-color: aliceblue;
@@ -44,13 +63,18 @@ td {
 #main_container {
     background-color: aliceblue;
     color: black;
-    height:auto;
-    width: 88%;
+    height:700px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 9%;
     box-shadow: black 0px 5px 25px;
 }
+
+.icon {
+    height: 65px;
+}
+
 
 /* modify_books styling */
 
@@ -72,8 +96,33 @@ td {
     margin: auto;
 }
 
+#gridview_container_patrons {
+    width: 80%;
+    height: 225px;
+    overflow: scroll;
+    border: 1px solid black;
+    margin: auto;
+}
 
 #gridview_books {
     width: 100%;
     margin: auto;
 }
+
+
+.add_modify {
+    width: 200px;
+}
+
+/* Error page styling */
+
+#error_title, #error_message {
+    text-align: center;
+}
+
+
+#error {
+    width: 500px;
+    margin: auto;
+}
+

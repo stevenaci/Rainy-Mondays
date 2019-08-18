@@ -11,15 +11,28 @@ namespace LibraryEnterprise
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["employee_id"] == null)
+            {
+                if (Session["patron_id"] != null)
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "patronhomepage.aspx");
+                }
+                else
+                {
+                    redirect_to_error_page("403 ERROR", "Employee access only.", "loginpage.aspx");
+                }
+            }
+
         }
 
         protected void btnemploy_Click(object sender, EventArgs e)
         {
+            Response.Redirect("displayEmployees.aspx");
         }
 
         protected void btnpatron_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("display_patrons.aspx");
         }
 
         protected void btncheckout_Click(object sender, EventArgs e)
@@ -33,14 +46,32 @@ namespace LibraryEnterprise
             Response.Redirect("checkin.aspx");
         }
 
-        protected void btnupdate_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("modify_books.aspx");
-        }
-
         protected void btndelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void addpatron_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("registration.aspx");
+        }
+
+        protected void btnsearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+        }
+
+        protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
+        {
+            Session["error_title"] = error_title;
+            Session["error_message"] = error_message;
+            Session["redirect_URL"] = redirect_URL;
+            Server.Transfer("error_page.aspx");
         }
     }
 }

@@ -16,6 +16,9 @@
     <form id="form1" runat="server">
         <div id="main_container">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/index.aspx" Text="Return" CssClass="btn" />
+            <br />
             <br />
             <br />
             <br />
@@ -23,7 +26,8 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee Log-in"></asp:Label>
+                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" CssClass="title" Text="Log-in"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -65,7 +69,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="btnlog" runat="server" Text="Login" />
+                        <asp:Button ID="btnlog" runat="server" Text="Login" OnClick="btnlog_Click" CssClass="btn" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>

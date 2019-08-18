@@ -22,22 +22,13 @@ namespace LibraryEnterprise {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lb_user control.
+        /// logout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_user;
-        
-        /// <summary>
-        /// lb_timestamp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_timestamp;
+        protected global::System.Web.UI.WebControls.Button logout;
         
         /// <summary>
         /// Label2 control.
@@ -130,15 +121,6 @@ namespace LibraryEnterprise {
         protected global::System.Web.UI.WebControls.Button btncheckin;
         
         /// <summary>
-        /// btnadd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnadd;
-        
-        /// <summary>
         /// btnupdate control.
         /// </summary>
         /// <remarks>
@@ -146,14 +128,5 @@ namespace LibraryEnterprise {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnupdate;
-        
-        /// <summary>
-        /// btndelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndelete;
     }
 }

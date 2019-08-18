@@ -71,22 +71,82 @@
     <Content Include="bin\LibraryEnterprise.pdb" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="books_database_employees.aspx" />
+    <Content Include="books_database_patrons.aspx" />
     <Content Include="checkin.aspx" />
     <Content Include="checkout.aspx" />
     <Content Include="css\main.css" />
+    <Content Include="displayEmployees.aspx" />
+    <Content Include="display_patrons.aspx" />
+    <Content Include="error_page.aspx" />
     <Content Include="homepage.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="loginpage.aspx" />
-    <Content Include="modify_books.aspx" />
     <Content Include="obj\Debug\LibraryEnterprise.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\LibraryEnterprise.dll" />
     <Content Include="obj\Debug\LibraryEnterprise.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="patronhomepage.aspx" />
+    <Content Include="patronloginpage.aspx" />
+    <Content Include="registration.aspx" />
+    <Content Include="request_page.aspx" />
+    <Content Include="request_page_admin.aspx" />
     <Content Include="resources\database_setup.sql" />
     <Content Include="resources\images\account.png" />
     <Content Include="resources\images\book.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="books_database_employees.aspx.cs">
+      <DependentUpon>books_database_employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="books_database_employees.aspx.designer.cs">
+      <DependentUpon>books_database_employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="books_database_patrons.aspx.cs">
+      <DependentUpon>books_database_patrons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="books_database_patrons.aspx.designer.cs">
+      <DependentUpon>books_database_patrons.aspx</DependentUpon>
+    </Compile>
     <Compile Include="checkin.aspx.cs">
       <DependentUpon>checkin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -101,12 +161,40 @@
     <Compile Include="checkout.aspx.designer.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="displayEmployees.aspx.cs">
+      <DependentUpon>displayEmployees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="displayEmployees.aspx.designer.cs">
+      <DependentUpon>displayEmployees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="display_patrons.aspx.cs">
+      <DependentUpon>display_patrons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="display_patrons.aspx.designer.cs">
+      <DependentUpon>display_patrons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error_page.aspx.cs">
+      <DependentUpon>error_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error_page.aspx.designer.cs">
+      <DependentUpon>error_page.aspx</DependentUpon>
+    </Compile>
     <Compile Include="homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="loginpage.aspx.cs">
       <DependentUpon>loginpage.aspx</DependentUpon>
@@ -115,12 +203,22 @@
     <Compile Include="loginpage.aspx.designer.cs">
       <DependentUpon>loginpage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="modify_books.aspx.cs">
-      <DependentUpon>modify_books.aspx</DependentUpon>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="patronhomepage.aspx.cs">
+      <DependentUpon>patronhomepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="modify_books.aspx.designer.cs">
-      <DependentUpon>modify_books.aspx</DependentUpon>
+    <Compile Include="patronhomepage.aspx.designer.cs">
+      <DependentUpon>patronhomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patronloginpage.aspx.cs">
+      <DependentUpon>patronloginpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patronloginpage.aspx.designer.cs">
+      <DependentUpon>patronloginpage.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -131,9 +229,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="registration.aspx.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registration.aspx.designer.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="request_page.aspx.cs">
+      <DependentUpon>request_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="request_page.aspx.designer.cs">
+      <DependentUpon>request_page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="request_page_admin.aspx.cs">
+      <DependentUpon>request_page_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="request_page_admin.aspx.designer.cs">
+      <DependentUpon>request_page_admin.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\LibraryEnterprise.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\LibraryEnterprise.csproj.CopyComplete" />
