@@ -7,27 +7,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
         <div id="main_container">
             <br />
-            <h2 id="book_database_title">Book Database</h2>
             <table id="main_table_container">
-                <tr>
-                    <td>
-                        <h3 id="error_title" runat="server">TEST</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p id="error_message" runat="server">message</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:LinkButton ID="btn_return" runat="server" OnClick="btn_return_Click">Return</asp:LinkButton>
-                    </td>
-                </tr>
+                <div id="error">
+                    <tr>
+                        <td>
+                            <h3 id="error_title" runat="server" class="title">TEST</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="error_message" runat="server" class="title2">message</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="btn_return" runat="server" OnClick="btn_return_Click">Return</asp:LinkButton>
+                        </td>
+                    </tr>
+                </div>
             </table>
             <br />
             <br />

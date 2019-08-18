@@ -21,8 +21,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
         <div id="main_container" class="auto-style2">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;

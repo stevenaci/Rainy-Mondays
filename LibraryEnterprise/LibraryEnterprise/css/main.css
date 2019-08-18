@@ -6,21 +6,27 @@ body {
 
 .btn {
     background-color: #a6dff5;
-    box-shadow: slateblue 2px 2px inset;
     border-radius: 5px;
 }
 
 .indxbtn {
     background-color: #a6dff5;
+    border-radius: 5px;
     width: 30%;
 }
 
 .rtn {
     background-color: #b200ff;
+    border-radius: 5px;
 }
 
 .title {
     font-size: 3em;
+    color: dimgrey;
+    text-align: center;
+}
+
+.title2 {
     color: dimgrey;
     text-align: center;
 }
@@ -58,7 +64,7 @@ td {
 #main_container {
     background-color: aliceblue;
     color: black;
-    height:600px;
+    height:700px;
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -153,4 +159,9 @@ td {
     text-align: center;
 }
 
+
+#error {
+    width: 500px;
+    margin: auto;
+}
 

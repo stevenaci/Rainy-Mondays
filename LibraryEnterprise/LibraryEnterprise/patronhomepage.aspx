@@ -28,8 +28,6 @@
     </style>
 </head>
 <body>
-    <br />
-    <br />
     <div id="main_container">
     <form id="form1" runat="server">
     <br />

@@ -14,8 +14,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
         <div id="main_container">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -28,7 +26,8 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee Log-in"></asp:Label>
+                        <asp:Label ID="lllbl1" runat="server" CssClass="title" Text="Employee"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" CssClass="title" Text="Log-in"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

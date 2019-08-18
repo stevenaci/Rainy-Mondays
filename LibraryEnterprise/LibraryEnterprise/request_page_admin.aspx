@@ -9,21 +9,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
         <div id="main_container">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="return" runat="server" PostBackUrl="~/homepage.aspx" Text="Return" CssClass="btn" />
             <br />
-            <h2 id="book_database_title">Book Request Page</h2>
+            <h2 id="book_database_title" class="title2">Book Request Page</h2>
             <table id="main_table_container">
                 <tr>
                     <td>
                         <div id="modify_books_container">
                             <table id="modify_books_table">
                             <tr>
-                                <th colspan="2">
+                                <th colspan="2" class="title2">
                                     Book Requests:
                                 </th>
                             </tr>

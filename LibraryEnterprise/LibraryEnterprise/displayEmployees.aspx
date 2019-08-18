@@ -9,22 +9,20 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
         <div id="main_container">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="return" runat="server" PostBackUrl="~/homepage.aspx" Text="Return" CssClass="btn" />
             <br />
-            <h2 id="book_database_title">Employee Database</h2>
+            <h2 id="book_database_title" class="title2">Employee Database</h2>
             <table id="main_table_container">
                 <tr>
                     <td>
                         <div id="search_books_container">
                             <table id="search_books_table">
                         <tr>
-                            <th colspan="2">
-                                Search Employees
+                            <th colspan="2" class="title2">
+                                Search
                             </th>
                         </tr>
                         <tr>
@@ -88,9 +86,8 @@
                                 <div id="delete_container">
                                     <table id="delete_books_table">
                                         <tr>
-                                            <th colspan="3">
-                                                Delete Employees
-                                            </th>
+                                            <th colspan="3" class="title2">
+                                                Delete</th>
                                         </tr>
                                         <tr>
                                             <td>
@@ -114,9 +111,8 @@
                         <div id="modify_books_container">
                             <table id="modify_books_table">
                             <tr>
-                                <th colspan="2">
-                                    Add / Modify Employees
-                                </th>
+                                <th colspan="2" class="title2">
+                                    Add / Modify</th>
                             </tr>
                             <tr>
                                 <td>

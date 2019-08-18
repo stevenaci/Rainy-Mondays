@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    
+
     <link rel="stylesheet" href="css/main.css" />
     <style type="text/css">
         .auto-style1 {
@@ -14,17 +14,18 @@
     </style>
 </head>
 <body>
-            <div id="main_container">
-    <form id="form1" runat="server">
-
-            <asp:Label ID="Label1" runat="server" Text="Checkout" CssClass="subtitle"></asp:Label>
+    <div id="main_container">
+        <form id="form1" runat="server">
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/homepage.aspx" Text="Return" CssClass="btn" />
             <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br />
-            <br />
-            <br />
-            <table style="width:100%;">
+            <table style="width: 100%;">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><asp:Label ID="Label2" runat="server" Text="Checkout" CssClass="subtitle"></asp:Label></td>
+                    <td>&nbsp;</td>
+                </tr>
                 <tr>
                     <td>Search User</td>
                     <td>Search Book</td>
@@ -45,12 +46,12 @@
                         <asp:TextBox ID="tb1" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                       
+
                         <asp:TextBox ID="tb3" runat="server"></asp:TextBox>
-                       
+
                     </td>
                     <td>
-            <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="Button1_Click" CssClass="btn" />
+                        <asp:Button ID="btnsearch" runat="server" Text="Search" OnClick="Button1_Click" CssClass="btn" />
                     </td>
                 </tr>
                 <tr>
@@ -74,7 +75,7 @@
                 </tr>
             </table>
             <br />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -82,8 +83,8 @@
                 </tr>
                 <tr>
                     <td>
-            <asp:DropDownList ID="ddpatrons" runat="server">
-            </asp:DropDownList>
+                        <asp:DropDownList ID="ddpatrons" runat="server">
+                        </asp:DropDownList>
                     </td>
                     <td>
                         <asp:DropDownList ID="ddbooks" runat="server">
@@ -110,7 +111,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
             <br />
-    </form>
-                        </div>
+        </form>
+    </div>
 </body>
 </html>

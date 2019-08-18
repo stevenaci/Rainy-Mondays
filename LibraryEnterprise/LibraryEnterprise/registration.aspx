@@ -21,8 +21,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
         <table style="width:100%;">
             <tr>
                 <td>&nbsp;</td>
