@@ -19,28 +19,30 @@ namespace LibraryEnterprise
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            bool emailExists = false;
-            string query = "SELECT * FROM patrons WHERE email='"+email.Text+"'";
-
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
+            try
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = query;
-                SqlDataReader rdr = command.ExecuteReader();
-                if (rdr.HasRows)
+                bool emailExists = false;
+                string query = "SELECT * FROM patrons WHERE email='" + email.Text + "'";
+
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = new SqlCommand(query))
                 {
-                    emailExists = true;
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = query;
+                    SqlDataReader rdr = command.ExecuteReader();
+                    if (rdr.HasRows)
+                    {
+                        emailExists = true;
+                    }
                 }
-            }
 
 
                 if (!emailExists)
                 {
                     query = "INSERT INTO patrons VALUES(@first_name,@last_name,@email,@password,@phone,@address,@account_balance)";
-                
+
                     using (SqlConnection connection = new SqlConnection(con_string))
                     using (SqlCommand command = new SqlCommand(query))
                     {
@@ -59,7 +61,11 @@ namespace LibraryEnterprise
                     }
                 }
                 else { debug.Text = "Email already exists"; }
-            
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
+            }
         }
     }
 }

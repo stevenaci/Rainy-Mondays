@@ -22,7 +22,8 @@
             <table style="width: 100%;">
                 <tr>
                     <td>&nbsp;</td>
-                    <td><asp:Label ID="Label2" runat="server" Text="Checkout" CssClass="subtitle"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label2" runat="server" Text="Checkout" CssClass="subtitle"></asp:Label></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

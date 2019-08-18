@@ -20,36 +20,43 @@ namespace LibraryEnterprise
 
         protected void btn1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = connection.CreateCommand())
+            try
             {
-                string query = "SELECT * FROM patrons where email = @email and password = @password";
-                command.CommandText = query;
-                connection.Open();
-
-                command.Parameters.AddWithValue("@email", tb1.Text);
-
-                command.Parameters.AddWithValue("@password", tb2.Text);
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = connection.CreateCommand())
                 {
-                    while (reader.Read())
+                    string query = "SELECT * FROM patrons where email = @email and password = @password";
+                    command.CommandText = query;
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@email", tb1.Text);
+
+                    command.Parameters.AddWithValue("@password", tb2.Text);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
                     {
-                        Session["patron_id"] = reader[0].ToString();
-                        Session["patron_name"] = reader[1].ToString() + " " + reader[2].ToString();
-                        Session["balance"] = reader.GetDecimal(reader.GetOrdinal("account_balance"));
+                        while (reader.Read())
+                        {
+                            Session["patron_id"] = reader[0].ToString();
+                            Session["patron_name"] = reader[1].ToString() + " " + reader[2].ToString();
+                            Session["balance"] = reader.GetDecimal(reader.GetOrdinal("account_balance"));
+                        }
+                    }
+
+                    if (Session["patron_id"] != null)
+                    {
+                        Response.Redirect("patronhomepage.aspx");
+                    }
+                    else
+                    {
+                        lbldebug.Text = "Invalid Login. Register to make an account";
                     }
                 }
-
-                if (Session["patron_id"] != null)
-                {
-                    Response.Redirect("patronhomepage.aspx");
-                }
-                else
-                {
-                    lbldebug.Text = "Invalid Login. Register to make an account";
-                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
             }
         }
 

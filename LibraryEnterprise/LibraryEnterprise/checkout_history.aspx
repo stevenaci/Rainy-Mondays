@@ -39,14 +39,14 @@
                                     <td>
                                         <asp:TextBox ID="tb_isbn" runat="server"></asp:TextBox>
                                     </td>
-                                </tr>      
+                                </tr>
                                 <tr>
                                     <td colspan="2">
                                         <div id="btn_search_container">
                                             <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" CssClass="btn" />
                                         </div>
                                     </td>
-                                </tr>  
+                                </tr>
                             </table>
                         </div>
                     </td>

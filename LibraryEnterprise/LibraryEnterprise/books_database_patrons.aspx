@@ -62,7 +62,7 @@
                                             <asp:Button ID="btn_search" runat="server" Text="Search" OnClick="btn_search_Click" CssClass="btn" />
                                         </div>
                                     </td>
-                                </tr>  
+                                </tr>
                             </table>
                         </div>
                     </td>

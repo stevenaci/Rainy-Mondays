@@ -179,7 +179,8 @@ namespace LibraryEnterprise
                     command.ExecuteNonQuery();
                 }
             }
-            else{
+            else
+            {
                 debug.Text = ddpatrons.SelectedItem + " has not checked out " + ddbooks.SelectedItem;
             }
         }

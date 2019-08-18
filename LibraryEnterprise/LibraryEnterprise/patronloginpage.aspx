@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-        <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <style type="text/css">
         .auto-style1 {
             height: 29px;
@@ -18,7 +18,7 @@
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="return" runat="server" PostBackUrl="~/index.aspx" Text="Return" CssClass="btn" />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <br />
                 <br />
                 <br />

@@ -40,26 +40,33 @@ namespace LibraryEnterprise
         }
 
         /*
-* Shawn:
-* Retrieve data from any table and display in gridview_books object in HTML
-* Simple pass a SELECT query into this function and data will display
-*/
+        * Retrieve data from any table and display in gridview_books object in HTML
+        * Simple pass a SELECT query into this function and data will display
+        */
         private void get_gridview_data(string query)
         {
-            System.Diagnostics.Debug.Write(query);
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-            using (DataTable data_table = new DataTable())
+            try
             {
-                data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
-                adapter.Fill(data_table);
-                gridview_books.DataSource = data_table;
-                gridview_books.DataBind();
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                using (DataTable data_table = new DataTable())
+                {
+                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
+                    adapter.Fill(data_table);
+                    gridview_books.DataSource = data_table;
+                    gridview_books.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
             }
         }
 
-
+        /*
+         * Delete button on click function
+         */
         protected void btn_delete_Click(object sender, EventArgs e)
         {
             if (tb_request_id.Text == "")
@@ -74,26 +81,39 @@ namespace LibraryEnterprise
             }
         }
 
+        /*
+         * Delete a record from request table
+         */
         protected void delete_request(int request_id)
         {
-            string query = "DELETE FROM requests WHERE request_id = @request_id;";
-            System.Diagnostics.Debug.Write(query);
-
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            using (DataTable data_table = new DataTable())
+            try
             {
-                connection.Open();
-                command.Connection = connection;
-                command.Parameters.AddWithValue("@request_id", request_id);
-                command.ExecuteNonQuery();
-                connection.Close();
+                string query = "DELETE FROM requests WHERE request_id = @request_id;";
+                System.Diagnostics.Debug.Write(query);
+
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = new SqlCommand(query))
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (DataTable data_table = new DataTable())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.Parameters.AddWithValue("@request_id", request_id);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                get_gridview_data(select_query);
             }
-            get_gridview_data(select_query);
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
+            }
         }
 
+        /*
+         * Redirect function
+         */
         protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
         {
             Session["error_title"] = error_title;

@@ -22,7 +22,7 @@
             <br />
             <br />
             <br />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <tr>
                     <td>&nbsp;</td>
                     <td>
@@ -41,28 +41,28 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-            <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-            <asp:TextBox ID="tbuser" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbuser" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-            <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-            <asp:TextBox ID="tbpass" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbpass" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

@@ -27,7 +27,7 @@ namespace LibraryEnterprise
             }
 
             lbl1.Text = "Welcome: " + Session["patron_name"];
-            
+
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
 
             int p_id = 0;
@@ -60,7 +60,7 @@ namespace LibraryEnterprise
                 " dbo.checkouts c" +
                 " on b.book_id = c.book_id" +
                 " where c.date_in IS NULL" +
-                " and DATEDIFF(day, c.date_out, CURRENT_TIMESTAMP) > 14"+
+                " and DATEDIFF(day, c.date_out, CURRENT_TIMESTAMP) > 14" +
                 " and c.patron_id = @p_id;";
 
             using (SqlConnection connection = new SqlConnection(con_string))

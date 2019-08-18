@@ -20,33 +20,40 @@ namespace LibraryEnterprise
 
         protected void btnlog_Click(object sender, EventArgs e)
         {
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = connection.CreateCommand())
+            try
             {
-                string query = "SELECT * FROM employees where email = @email and password = @password";
-                command.CommandText = query;
-                connection.Open();
-                command.Parameters.AddWithValue("@email", tbuser.Text);
-                command.Parameters.AddWithValue("@password", tbpass.Text);
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = connection.CreateCommand())
                 {
-                    while (reader.Read())
+                    string query = "SELECT * FROM employees where email = @email and password = @password";
+                    command.CommandText = query;
+                    connection.Open();
+                    command.Parameters.AddWithValue("@email", tbuser.Text);
+                    command.Parameters.AddWithValue("@password", tbpass.Text);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
                     {
-                        Session["employee_id"] = reader[0].ToString();
+                        while (reader.Read())
+                        {
+                            Session["employee_id"] = reader[0].ToString();
+                        }
+                    }
+
+                    if (Session["employee_id"] != null)
+                    {
+                        Response.Redirect("homepage.aspx");
+                    }
+                    else
+                    {
+                        lbldebug.Text = "Invalid Login";
                     }
                 }
-
-                if (Session["employee_id"] != null)
-                {
-                    Response.Redirect("homepage.aspx");
-                }
-                else
-                {
-                    lbldebug.Text = "Invalid Login";
-                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
             }
         }
     }

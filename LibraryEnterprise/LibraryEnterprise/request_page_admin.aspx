@@ -20,31 +20,28 @@
                     <td>
                         <div id="modify_books_container">
                             <table id="modify_books_table">
-                            <tr>
-                                <th colspan="2" class="title2">
-                                    Book Requests:
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:Label ID="Label3" runat="server" Text="Request ID:"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tb_request_id" CssClass="add_modify" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>                       
-                            <tr>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <asp:Button ID="btn_delete" CssClass="add_modify btn" runat="server" Text="Delete" OnClick="btn_delete_Click"/>
-                                </td>
-   <%--                             <td>
+                                <tr>
+                                    <th colspan="2" class="title2">Book Requests:
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label3" runat="server" Text="Request ID:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="tb_request_id" CssClass="add_modify" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <asp:Button ID="btn_delete" CssClass="add_modify btn" runat="server" Text="Delete" OnClick="btn_delete_Click" />
+                                    </td>
+                                    <%--                             <td>
                                     <asp:Button ID="btn_add" CssClass="add_modify" runat="server" Text="Complete Request" OnClick="btn_add_Click"/>
                                 </td>--%>
-                            </tr>
-                        </table>
+                                </tr>
+                            </table>
                         </div>
                     </td>
                 </tr>

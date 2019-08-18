@@ -10,10 +10,12 @@
         .auto-style1 {
             height: 26px;
         }
+
         .auto-style2 {
             height: 684px;
             margin-bottom: 0px;
         }
+
         .auto-style3 {
             height: 50px;
         }
@@ -25,7 +27,7 @@
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="logout" runat="server" OnClick="logout_Click" PostBackUrl="~/index.aspx" Text="Logout" CssClass="btn" />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <tr>
                     <td class="auto-style1"></td>
                     <td class="auto-style1">
@@ -46,7 +48,7 @@
             </table>
             <br />
             <br />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <tr>
                     <td class="auto-style3"></td>
                     <td class="auto-style3">
@@ -67,19 +69,17 @@
                         <asp:Image ID="Image1" runat="server" CssClass="icon" ImageUrl="~/resources/images/account.png" />
                     </td>
                     <td>
-                        <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center btn" PostBackUrl="~/display_patrons.aspx" style="height: 29px" />
-                    </td>       
+                        <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center btn" PostBackUrl="~/display_patrons.aspx" Style="height: 29px" />
+                    </td>
                 </tr>
                 <tr>
-                    <td>
-                        &nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>
-                        &nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
             </table>
             <br />
-            <table style="width:100%;">
+            <table style="width: 100%;">
                 <tr>
                     <td>&nbsp;</td>
                     <td>
@@ -106,11 +106,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        &nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>
-                        &nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
@@ -127,7 +125,7 @@
             <br />
             <br />
             <br />
-            
+
         </div>
     </form>
 </body>

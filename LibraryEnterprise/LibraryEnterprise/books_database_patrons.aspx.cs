@@ -12,8 +12,7 @@ namespace LibraryEnterprise
 {
     public partial class books_database_patrons : System.Web.UI.Page
     {
-        // The default select query for retrieving book data
-        // Searching will concatenate a WHERE condition at the end
+        // Select query for data grid view
         string select_query = "SELECT b.book_id AS 'ID', b.isbn AS 'ISBN', b.author AS 'Author', " +
                               "b.title AS 'Title', g.genre_name AS 'Genre', b.language AS 'Language', " +
                               "b.year AS 'Year', b.quantity AS 'Quantity' " +
@@ -34,7 +33,6 @@ namespace LibraryEnterprise
                 }
             }
 
-
             if (!IsPostBack)
             {
                 get_gridview_data(select_query);
@@ -42,27 +40,31 @@ namespace LibraryEnterprise
         }
 
         /*
-         * Shawn:
          * Retrieve data from any table and display in gridview_books object in HTML
          * Simple pass a SELECT query into this function and data will display
          */
         private void get_gridview_data(string query)
         {
-            System.Diagnostics.Debug.Write(query);
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-            using (DataTable data_table = new DataTable())
+            try
             {
-                data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
-                adapter.Fill(data_table);
-                gridview_books.DataSource = data_table;
-                gridview_books.DataBind();
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                using (DataTable data_table = new DataTable())
+                {
+                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
+                    adapter.Fill(data_table);
+                    gridview_books.DataSource = data_table;
+                    gridview_books.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
             }
         }
 
         /*
-         * Shawn:
          * OnClick function for search button
          */
         protected void btn_search_Click(object sender, EventArgs e)
@@ -91,6 +93,10 @@ namespace LibraryEnterprise
             }
         }
 
+        /*
+         * Adds a sequence of where conditions to a SELECT query
+         * After the first condition is added, each subsequent will be preceeded by 'AND'
+         */
         protected bool add_where_conditions(string column, string value, bool multiple_conditions)
         {
             if (value != "")
@@ -105,6 +111,9 @@ namespace LibraryEnterprise
             return multiple_conditions;
         }
 
+        /*
+         * Redirect function
+         */
         protected void redirect_to_error_page(string error_title, string error_message, string redirect_URL)
         {
             Session["error_title"] = error_title;

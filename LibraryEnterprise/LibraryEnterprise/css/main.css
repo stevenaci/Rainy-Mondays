@@ -75,7 +75,7 @@ td {
     height: 65px;
 }
 
-#checkout_container {
+#checkout_container, #search_books_container {
     width: 500px;
     margin: auto;
 }

@@ -29,7 +29,7 @@ namespace LibraryEnterprise
                 {
                     delta = rdr.GetInt32(0);
                 }
-                    
+
 
             }
             // update all patron fees
@@ -55,7 +55,7 @@ namespace LibraryEnterprise
                     cmd2.Parameters.AddWithValue("@balance", balance);
                     cmd2.Parameters.AddWithValue("@patronid", rdr.GetInt32(1));
                     cmd2.ExecuteScalar();
-                    
+
                 }
             }
 
