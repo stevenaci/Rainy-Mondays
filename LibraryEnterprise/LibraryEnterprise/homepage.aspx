@@ -25,20 +25,8 @@
         <br />
         <div id="main_container" class="auto-style2">
             <br />
-<%--            <table style="width:100%;">
-                <tr>
-                    <td>
-                        <asp:Label ID="lb_user" runat="server"></asp:Label>
-                        <asp:Label ID="lb_timestamp" runat="server"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>--%>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="logout" runat="server" OnClick="logout_Click" PostBackUrl="~/index.aspx" Text="Logout" />
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style1"></td>
@@ -84,7 +72,7 @@
                         <asp:Button ID="btnpatron" runat="server" Text="View Patrons" OnClick="btnpatron_Click" CssClass="center" PostBackUrl="~/display_patrons.aspx" style="height: 29px" />
                     </td>
                 </tr>
-<%--                <tr>
+                <%--                <tr>
                     <td>
                         &nbsp;</td>
                     <td>&nbsp;</td>

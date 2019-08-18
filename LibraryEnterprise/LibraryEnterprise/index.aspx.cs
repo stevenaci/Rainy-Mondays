@@ -12,9 +12,10 @@ namespace LibraryEnterprise
 {
     public partial class index : System.Web.UI.Page
     {
+        string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+
             String query = "select DATEDIFF(day, l.lastaccessed, CURRENT_TIMESTAMP) from dbo.lastaccessed l";
             int delta = 0;
             // find the difference between dates
@@ -58,8 +59,21 @@ namespace LibraryEnterprise
                 }
             }
 
-        }
+            UpdateDate();
 
+        }
+        protected void UpdateDate()
+        {
+            string query = "UPDATE dbo.lastaccessed set lastaccessed = @curdate where singleton = 0 ;";
+            SqlConnection con = new SqlConnection(con_string);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@curdate", DateTime.Now);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            cmd.Dispose();
+        }
         protected void btn1_Click(object sender, EventArgs e)
         {
             Response.Redirect("loginpage.aspx");

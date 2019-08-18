@@ -50,5 +50,10 @@ namespace LibraryEnterprise
         {
 
         }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+        }
     }
 }

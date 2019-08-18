@@ -14,7 +14,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <br />
+        <br />
         <div id="main_container">
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="return" runat="server" PostBackUrl="~/index.aspx" Text="Return" />
             <table style="width:100%;">
                 <tr>
                     <td>&nbsp;</td>
