@@ -19,7 +19,7 @@
         <div id="main_container">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="return" runat="server" PostBackUrl="~/index.aspx" Text="Return" CssClass="btn" />
+            <asp:Button ID="return" runat="server" PostBackUrl="~/index.aspx" Text="Return" CssClass="rtn" />
             <table style="width:100%;">
                 <br />
                 <br />
@@ -28,7 +28,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="Label1" runat="server" Text="Patron Log in"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Patron Log in" CssClass="subtitle"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

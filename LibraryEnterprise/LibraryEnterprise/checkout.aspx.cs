@@ -45,13 +45,13 @@ namespace LibraryEnterprise
             {
                 query += " where";
             }
-                if (!(uf1 == ""))
+            if (!(uf1 == ""))
             {
-                query += " first_name LIKE '%" + uf1 +"%'"; 
+                query += " first_name LIKE '%" + uf1 + "%'";
             }
             if (!(uf2 == ""))
             {
-                query += " last_name LIKE '%" + uf2 +"%'";
+                query += " last_name LIKE '%" + uf2 + "%'";
             }
 
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
@@ -96,7 +96,7 @@ namespace LibraryEnterprise
             }
             if (!(uf2 == ""))
             {
-                query += " title LIKE '%" + uf2 + "%'";
+                query += " title LIKE '%" + uf2 + "%' and quantity > 0";
             }
 
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
@@ -131,8 +131,6 @@ namespace LibraryEnterprise
             using (SqlConnection connection = new SqlConnection(con_string))
             using (SqlCommand command = new SqlCommand(query))
             {
-
-
                 connection.Open();
                 command.Connection = connection;
                 command.Parameters.AddWithValue("@patron_id", ddpatrons.SelectedValue);
@@ -142,8 +140,18 @@ namespace LibraryEnterprise
                 command.Parameters[3].IsNullable = true;
 
                 command.ExecuteScalar();
-                
+
                 debug.Text = "Book Checked out for " + ddpatrons.SelectedItem + ": " + ddbooks.SelectedItem;
+            }
+
+            query = "UPDATE BOOKS set quantity=(quantity-1) where book_id=@book_id";
+            using (SqlConnection connection = new SqlConnection(con_string))
+            using (SqlCommand command = new SqlCommand(query))
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.Parameters.AddWithValue("@book_id", ddbooks.SelectedValue);
+                command.ExecuteNonQuery();
             }
         }
 

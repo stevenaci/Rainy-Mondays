@@ -5,9 +5,18 @@ body {
 }
 
 .btn {
-    background-color: aqua;
+    background-color: #a6dff5;
     box-shadow: slateblue 2px 2px inset;
     border-radius: 5px;
+}
+
+.indxbtn {
+    background-color: #a6dff5;
+    width: 30%;
+}
+
+.rtn {
+    background-color: #b200ff;
 }
 
 .title {

@@ -26,6 +26,8 @@ namespace LibraryEnterprise
                 }
             }
 
+            lbl1.Text = "Welcome: " + Session["patron_id"];
+            
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
 
             int p_id = 0;

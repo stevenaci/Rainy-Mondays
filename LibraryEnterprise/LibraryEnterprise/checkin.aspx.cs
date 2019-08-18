@@ -126,8 +126,8 @@ namespace LibraryEnterprise
         {
             // get correct checkout_id from non returned book
             int check_id = 0;
-
-            string query = "SELECT checkout_id from checkouts WHERE book_id = @book_id;";
+            bool exists = false;
+            string query = "SELECT checkout_id from checkouts WHERE book_id = @book_id and patron_id=@patron_id;";
             string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(con_string))
             using (SqlCommand command = new SqlCommand(query))
@@ -135,35 +135,52 @@ namespace LibraryEnterprise
                 connection.Open();
                 command.Connection = connection;
                 command.Parameters.AddWithValue("@book_id", ddbooks.SelectedValue);
+                command.Parameters.AddWithValue("@patron_id", ddbooks.SelectedValue);
                 SqlDataReader rdr = command.ExecuteReader();
 
                 if (rdr.HasRows)
                 {
+                    exists = true;
                     while (rdr.Read())
                     {
                         check_id = rdr.GetInt32(0);
+
                     }
                 }
             }
 
-
-            query = "UPDATE checkouts SET " +
-                            "date_in = @date_in " +
-                            "WHERE checkout_id = @checkout_id;";
-
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
+            if (exists)
             {
+                query = "UPDATE checkouts SET " +
+                                "date_in = @date_in " +
+                                "WHERE checkout_id = @checkout_id;";
+
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = new SqlCommand(query))
+                {
 
 
-                connection.Open();
-                command.Connection = connection;
-                command.Parameters.AddWithValue("@checkout_id", check_id);
-                command.Parameters.AddWithValue("@date_in", DateTime.Now);
+                    connection.Open();
+                    command.Connection = connection;
+                    command.Parameters.AddWithValue("@checkout_id", check_id);
+                    command.Parameters.AddWithValue("@date_in", DateTime.Now);
 
-                command.ExecuteScalar();
+                    command.ExecuteScalar();
 
-                debug.Text = "Book Checked in for " + ddpatrons.SelectedItem + ": " + ddbooks.SelectedItem;
+                    debug.Text = "Book Checked in for " + ddpatrons.SelectedItem + ": " + ddbooks.SelectedItem;
+                }
+                query = "UPDATE BOOKS set quantity=(quantity+1) where book_id=@book_id";
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = new SqlCommand(query))
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.Parameters.AddWithValue("@book_id", ddbooks.SelectedValue);
+                    command.ExecuteNonQuery();
+                }
+            }
+            else{
+                debug.Text = ddpatrons.SelectedItem + " has not checked out " + ddbooks.SelectedItem;
             }
         }
 
