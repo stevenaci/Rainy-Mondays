@@ -172,6 +172,9 @@
     <Compile Include="checkout_history.aspx.designer.cs">
       <DependentUpon>checkout_history.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Checkout_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="displayEmployees.aspx.cs">
       <DependentUpon>displayEmployees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

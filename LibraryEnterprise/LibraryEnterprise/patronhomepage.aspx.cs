@@ -12,6 +12,9 @@ namespace LibraryEnterprise
 {
     public partial class patronhomepage : System.Web.UI.Page
     {
+        // Used to carry out CRUD functionality with books table
+        Checkout_keeper checkout_keeper = new Checkout_keeper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["patron_id"] == null)
@@ -27,10 +30,8 @@ namespace LibraryEnterprise
             }
 
             lbl1.Text = "Welcome: " + Session["patron_name"];
+            int p_id = Convert.ToInt32(Session["patron_id"]);
 
-            string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-
-            int p_id = 0;
             // load all checked out books
             string query = "select isbn, title, author" +
                             " from dbo.books b" +
@@ -40,20 +41,9 @@ namespace LibraryEnterprise
                             " where c.date_in IS NULL" +
                             " and c.patron_id = @p_id;";
 
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.Parameters.AddWithValue("@p_id", p_id);
-                SqlDataReader rdr = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rdr);
+            checkout_keeper.set_grid_view(query, p_id, gv1);
 
-                gv1.DataSource = dt;
-                gv1.DataBind();
-            }
-
+            // load all overdue books
             query = "select isbn, title, author" +
                 " from dbo.books b" +
                 " inner join" +
@@ -63,18 +53,8 @@ namespace LibraryEnterprise
                 " and DATEDIFF(day, c.date_out, CURRENT_TIMESTAMP) > 14" +
                 " and c.patron_id = @p_id;";
 
-            using (SqlConnection connection = new SqlConnection(con_string))
-            using (SqlCommand command = new SqlCommand(query))
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.Parameters.AddWithValue("@p_id", p_id);
-                SqlDataReader rdr = command.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rdr);
-                gv2.DataSource = dt;
-                gv2.DataBind();
-            }
+            checkout_keeper.set_grid_view(query, p_id, gv2);
+
             lblbal.Text = Session["balance"].ToString();
 
         }

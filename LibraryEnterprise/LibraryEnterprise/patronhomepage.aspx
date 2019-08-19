@@ -64,12 +64,16 @@
                     </tr>
                     <tr>
                         <td class="auto-style2">
-                            <asp:GridView ID="gv1" runat="server">
-                            </asp:GridView>
+                            <div class="gridview_container_small">
+                                <asp:GridView ID="gv1" runat="server">
+                                </asp:GridView>
+                            </div>
                         </td>
                         <td class="auto-style2">
-                            <asp:GridView ID="gv2" runat="server">
-                            </asp:GridView>
+                            <div class="gridview_container_small">
+                                <asp:GridView ID="gv2" runat="server">
+                                </asp:GridView>
+                            </div>
                         </td>
                         <td class="auto-style2">Total Balance Owed: 
                     <asp:Label ID="lblbal" runat="server"></asp:Label>
