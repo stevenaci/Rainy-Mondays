@@ -148,6 +148,9 @@
     <Compile Include="books_database_patrons.aspx.designer.cs">
       <DependentUpon>books_database_patrons.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Book_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="checkin.aspx.cs">
       <DependentUpon>checkin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,6 +185,9 @@
     </Compile>
     <Compile Include="display_patrons.aspx.designer.cs">
       <DependentUpon>display_patrons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="error_page.aspx.cs">
       <DependentUpon>error_page.aspx</DependentUpon>
@@ -228,6 +234,9 @@
     <Compile Include="patronloginpage.aspx.designer.cs">
       <DependentUpon>patronloginpage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Patron_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -240,6 +249,9 @@
     </Compile>
     <Compile Include="registration.aspx.designer.cs">
       <DependentUpon>registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Request_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="request_page.aspx.cs">
       <DependentUpon>request_page.aspx</DependentUpon>

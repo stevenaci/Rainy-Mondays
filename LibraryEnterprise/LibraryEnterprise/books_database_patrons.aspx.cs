@@ -12,6 +12,10 @@ namespace LibraryEnterprise
 {
     public partial class books_database_patrons : System.Web.UI.Page
     {
+
+        // Used to carry out CRUD functionality with books table
+        Book_keeper book_keeper = new Book_keeper();
+
         // Select query for data grid view
         string select_query = "SELECT b.book_id AS 'ID', b.isbn AS 'ISBN', b.author AS 'Author', " +
                               "b.title AS 'Title', g.genre_name AS 'Genre', b.language AS 'Language', " +
@@ -35,32 +39,7 @@ namespace LibraryEnterprise
 
             if (!IsPostBack)
             {
-                get_gridview_data(select_query);
-            }
-        }
-
-        /*
-         * Retrieve data from any table and display in gridview_books object in HTML
-         * Simple pass a SELECT query into this function and data will display
-         */
-        private void get_gridview_data(string query)
-        {
-            try
-            {
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                using (DataTable data_table = new DataTable())
-                {
-                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["genre_id"] };
-                    adapter.Fill(data_table);
-                    gridview_books.DataSource = data_table;
-                    gridview_books.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
+                book_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 
@@ -72,7 +51,7 @@ namespace LibraryEnterprise
             if (tb_isbn.Text == "" && tb_author.Text == "" && tb_title.Text == "" && tb_year.Text == "")
             {
                 // display all books if textboxes are empty
-                get_gridview_data(select_query);
+                book_keeper.get_gridview_data(select_query, gridview_books);
             }
             else
             {
@@ -89,7 +68,7 @@ namespace LibraryEnterprise
                 multiple_conditions = add_where_conditions("title", title, multiple_conditions);
                 multiple_conditions = add_where_conditions("year", year, multiple_conditions);
 
-                get_gridview_data(select_query);
+                book_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 

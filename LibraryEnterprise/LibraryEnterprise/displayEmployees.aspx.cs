@@ -12,6 +12,9 @@ namespace LibraryEnterprise
 {
     public partial class displayEmployees : System.Web.UI.Page
     {
+        // Used to carry out CRUD functionality with employees table
+        Employee_keeper employee_keeper = new Employee_keeper();
+
         string select_query = "SELECT * from employees";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,33 +33,7 @@ namespace LibraryEnterprise
 
             if (!IsPostBack)
             {
-                get_gridview_data(select_query);
-
-            }
-        }
-
-        /*
-         * Retrieve data from any table and display in gridview object in HTML
-         * Simple pass a SELECT query into this function and data will display
-         */
-        private void get_gridview_data(string query)
-        {
-            try
-            {
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                using (DataTable data_table = new DataTable())
-                {
-                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["employee_id"] };
-                    adapter.Fill(data_table);
-                    gridview_books.DataSource = data_table;
-                    gridview_books.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
+                employee_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 
@@ -68,7 +45,7 @@ namespace LibraryEnterprise
             if (tb_fn.Text.Trim() == "" && tb_ln.Text.Trim() == "" && tb_email.Text.Trim() == "" && tb_phone.Text.Trim() == "" && tb_address.Text.Trim() == "" && tb_balance.Text.Trim() == "")
             {
                 // display all employees if textboxes are empty
-                get_gridview_data(select_query);
+                employee_keeper.get_gridview_data(select_query, gridview_books);
             }
             else
             {
@@ -90,10 +67,9 @@ namespace LibraryEnterprise
                 multiple_conditions = add_where_conditions("role", role, multiple_conditions);
 
 
-                get_gridview_data(select_query);
+                employee_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
-
 
         /*
          * Adds a sequence of where conditions to a SELECT query
@@ -111,60 +87,6 @@ namespace LibraryEnterprise
                 multiple_conditions = true;
             }
             return multiple_conditions;
-        }
-
-        /*
-         * Delete Button onclick
-         */
-        protected void btn_delete_Click(object sender, EventArgs e)
-        {
-
-            if (tb_delete_id.Text == "")
-            {
-                // ERROR: EMPTY FIELD DETECTED
-                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
-            }
-            else
-            {
-                int employee_id = Convert.ToInt32(tb_delete_id.Text.ToString().Trim());
-                if (Convert.ToInt32(Session["employee_id"]) == employee_id)
-                {
-                    redirect_to_error_page("ERROR 403", "You can not delete your own account", "displayEmployees.aspx");
-                }
-                else
-                {
-                    delete_employee(employee_id);
-                }
-            }
-        }
-
-        /*
-         * Update Button onclick
-         * 
-         */
-        protected void btn_update_Click(object sender, EventArgs e)
-        {
-            //System.Diagnostics.Debug.Write("!!!!!!!!!!!!!!!!!!!!!");
-            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
-                                tb_language3.Text == "" || tb_year3.Text == "" || tb_password.Text == "")
-            {
-                // ERROR: EMPTY FIELD DETECTED
-                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
-            }
-            else
-            {
-                int employee_id = Convert.ToInt32(tb_modify_id.Text.ToString().Trim());
-                string first_name = tb_isbm3.Text.ToString().Trim();
-                string last_name = tb_author3.Text.ToString().Trim();
-                string email = tb_title3.Text.ToString().Trim();
-                string password = tb_password.Text.ToString().Trim();
-                string phone = dd_genre.Text.ToString().Trim();
-                string address = tb_language3.Text.ToString().Trim();
-                string role = tb_year3.Text.ToString().Trim();
-
-                //  System.Diagnostics.Debug.Write("ERROR: INSIDE UPDATE");
-                update_employee(employee_id, first_name, last_name, email, password, phone, address, role);
-            }
         }
 
         /*
@@ -192,125 +114,70 @@ namespace LibraryEnterprise
                 bool duplicate_email = check_duplicate_email(email);
                 if (!duplicate_email)
                 {
-                    add_employee(first_name, last_name, email, password, phone, address, role);
+                    employee_keeper.add_employee(first_name, last_name, email, password, phone, address, role);
                 }
                 else
                 {
                     System.Diagnostics.Debug.Write("Email already exists");
                 }
             }
+            employee_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*
-         * Add Record to Employee Table
+         * Update Button onclick
+         * 
          */
-        protected void add_employee(string first_name, string last_name, string email, string password, string phone, string address,
-                                string role)
+        protected void btn_update_Click(object sender, EventArgs e)
         {
-            try
+            //System.Diagnostics.Debug.Write("!!!!!!!!!!!!!!!!!!!!!");
+            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
+                                tb_language3.Text == "" || tb_year3.Text == "" || tb_password.Text == "")
             {
-                string query = "INSERT INTO employees VALUES" +
-                                "(@first_name, @last_name, @email, @password, @phone, @address, @role);";
-
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@password", password);
-                    command.Parameters.AddWithValue("@phone", phone);
-                    command.Parameters.AddWithValue("@address", address);
-                    command.Parameters.AddWithValue("@role", role);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-                get_gridview_data(select_query);
+                // ERROR: EMPTY FIELD DETECTED
+                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
-        }
+                int employee_id = Convert.ToInt32(tb_modify_id.Text.ToString().Trim());
+                string first_name = tb_isbm3.Text.ToString().Trim();
+                string last_name = tb_author3.Text.ToString().Trim();
+                string email = tb_title3.Text.ToString().Trim();
+                string password = tb_password.Text.ToString().Trim();
+                string phone = dd_genre.Text.ToString().Trim();
+                string address = tb_language3.Text.ToString().Trim();
+                string role = tb_year3.Text.ToString().Trim();
 
-
-        /*
-         * Update to Employee Table
-         */
-        protected void update_employee(int employee_id, string first_name, string last_name, string email, string password, string phone, string address,
-                                string role)
-        {
-            try
-            {
-                string query = "UPDATE employees SET " +
-                                "first_name = @first_name, " +
-                                "last_name = @last_name, " +
-                                "email = @email, " +
-                                "password = @password, " +
-                                "phone = @phone, " +
-                                "address = @address, " +
-                                "role = @role " +
-                                "WHERE employee_id = @employee_id;";
-                System.Diagnostics.Debug.Write(query);
-
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@employee_id", employee_id);
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@password", password);
-                    command.Parameters.AddWithValue("@phone", phone);
-                    command.Parameters.AddWithValue("@address", address);
-                    command.Parameters.AddWithValue("@role", role);
-                    command.ExecuteScalar();
-                    connection.Close();
-                }
-                get_gridview_data(select_query);
+                //  System.Diagnostics.Debug.Write("ERROR: INSIDE UPDATE");
+                employee_keeper.update_employee(employee_id, first_name, last_name, email, password, phone, address, role);
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
+            employee_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*
-         * Deletes employee record from employee table based on employee_id
+         * Delete Button onclick
          */
-        protected void delete_employee(int employee_id)
+        protected void btn_delete_Click(object sender, EventArgs e)
         {
-            try
+
+            if (tb_delete_id.Text == "")
             {
-                string query = "DELETE FROM employees WHERE employee_id = @employee_id;";
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
+                // ERROR: EMPTY FIELD DETECTED
+                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
+            }
+            else
+            {
+                int employee_id = Convert.ToInt32(tb_delete_id.Text.ToString().Trim());
+                if (Convert.ToInt32(Session["employee_id"]) == employee_id)
                 {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@employee_id", employee_id);
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    redirect_to_error_page("ERROR 403", "You can not delete your own account", "displayEmployees.aspx");
                 }
-                get_gridview_data(select_query);
+                else
+                {
+                    employee_keeper.delete_employee(employee_id);
+                }
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
+            employee_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*

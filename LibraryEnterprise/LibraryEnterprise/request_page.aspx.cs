@@ -12,6 +12,9 @@ namespace LibraryEnterprise
 {
     public partial class request_page : System.Web.UI.Page
     {
+        // Used to carry out CRUD functionality with requests database
+        Request_keeper request_keeper = new Request_keeper();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["patron_id"] == null)
@@ -28,39 +31,7 @@ namespace LibraryEnterprise
 
             if (!IsPostBack)
             {
-                get_genre_data();
-            }
-            System.Diagnostics.Debug.Write("HELLLLOOOOO\n");
-            System.Diagnostics.Debug.Write(Session["patron_id"].ToString());
-        }
-
-        /*
-         * Sets data for genre dropdown
-         *
-         */
-        private void get_genre_data()
-        {
-            try
-            {
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand("SELECT genre_name FROM genres;"))
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            dd_genre.Items.Add(reader[0].ToString());
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
+                request_keeper.get_genre_data(dd_genre);
             }
         }
 
@@ -88,46 +59,10 @@ namespace LibraryEnterprise
 
                 int genre_id = get_genre_id(genre);
 
-                add_request(patron_id, isbn, author, title, genre_id, language, year);
+                request_keeper.add_request(patron_id, isbn, author, title, genre_id, language, year);
             }
 
             redirect_to_error_page("SUCCESS", "You have successfully requested a book. Click below to return.", "request_page.aspx");
-        }
-
-        /*
-         * Add Record to Requests Table
-         */
-        protected void add_request(int patron_id, string isbm, string author, string title,
-                                   int genre_id, string language, int year)
-        {
-            try
-            {
-                string query = "INSERT INTO requests VALUES" +
-                                "(@patron_id, @isbm, @author, @title, @genre_id, @language, @year);";
-
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@patron_id", patron_id);
-                    command.Parameters.AddWithValue("@isbm", isbm);
-                    command.Parameters.AddWithValue("@author", author);
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@genre_id", genre_id);
-                    command.Parameters.AddWithValue("@language", language);
-                    command.Parameters.AddWithValue("@year", year);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
         }
 
         /*

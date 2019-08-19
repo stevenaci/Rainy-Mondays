@@ -12,6 +12,8 @@ namespace LibraryEnterprise
 {
     public partial class display_patrons : System.Web.UI.Page
     {
+        // Used to carry out CRUD functionality with patrons table
+        Patron_keeper patron_keeper = new Patron_keeper();
 
         string select_query = "SELECT * from patrons";
 
@@ -31,35 +33,10 @@ namespace LibraryEnterprise
 
             if (!IsPostBack)
             {
-                get_gridview_data(select_query);
-
+                patron_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 
-        /*
-         * Retrieve data from any table and display in gridview object in HTML
-         * Simple pass a SELECT query into this function and data will display
-         */
-        private void get_gridview_data(string query)
-        {
-            try
-            {
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                using (DataTable data_table = new DataTable())
-                {
-                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["patrons_id"] };
-                    adapter.Fill(data_table);
-                    gridview_books.DataSource = data_table;
-                    gridview_books.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
-        }
 
         /*
          * OnClick function for search button
@@ -69,7 +46,7 @@ namespace LibraryEnterprise
             if (tb_fn.Text == "" && tb_ln.Text == "" && tb_email.Text == "" && tb_phone.Text == "" && tb_address.Text == "" && tb_balance.Text == "" && TextBox1.Text == "")
             {
                 // display all patrons if textboxes are empty
-                get_gridview_data(select_query);
+                patron_keeper.get_gridview_data(select_query, gridview_books);
             }
             else
             {
@@ -92,10 +69,9 @@ namespace LibraryEnterprise
                 multiple_conditions = add_where_conditions("address", address, multiple_conditions);
                 multiple_conditions = add_where_conditions("account_balance", balance, multiple_conditions);
 
-                get_gridview_data(select_query);
+                patron_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
-
 
         /*
          * Adds a sequence of where conditions to a SELECT query
@@ -113,52 +89,6 @@ namespace LibraryEnterprise
                 multiple_conditions = true;
             }
             return multiple_conditions;
-        }
-
-        /*
-         * Delete Button onclick
-         */
-        protected void btn_delete_Click(object sender, EventArgs e)
-        {
-
-            if (tb_delete_id.Text == "")
-            {
-                // ERROR: EMPTY FIELD DETECTED
-                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
-            }
-            else
-            {
-                int patron_id = Convert.ToInt32(tb_delete_id.Text.ToString().Trim());
-                delete_patron(patron_id);
-            }
-        }
-
-        /*
-         * Update Button onclick
-         * 
-         */
-        protected void btn_update_Click(object sender, EventArgs e)
-        {
-            //System.Diagnostics.Debug.Write("!!!!!!!!!!!!!!!!!!!!!");
-            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
-                                tb_language3.Text == "" || tb_year3.Text == "" || TextBox2.Text == "")
-            {
-                // ERROR: EMPTY FIELD DETECTED
-                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
-            }
-            else
-            {
-                int patron_id = Convert.ToInt32(tb_modify_id.Text.ToString().Trim());
-                string first_name = tb_isbm3.Text.ToString().Trim();
-                string last_name = tb_author3.Text.ToString().Trim();
-                string email = tb_title3.Text.ToString().Trim();
-                string password = TextBox2.Text.ToString().Trim();
-                string phone = dd_genre.Text.ToString().Trim();
-                string address = tb_language3.Text.ToString().Trim();
-                double account_balance = Convert.ToDouble(tb_year3.Text.ToString().Trim());
-
-                update_patron(patron_id, first_name, last_name, email, password, phone, address, account_balance);
-            }
         }
 
         /*
@@ -186,123 +116,62 @@ namespace LibraryEnterprise
                 bool duplicate_email = check_duplicate_email(email);
                 if (!duplicate_email)
                 {
-                    add_patron(first_name, last_name, email, password, phone, address, account_balance);
+                    patron_keeper.add_patron(first_name, last_name, email, password, phone, address, account_balance);
                 }
                 else
                 {
                     System.Diagnostics.Debug.Write("Email already exists");
                 }
             }
+            patron_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*
-         * Add Record to Patron Table
+         * Update Button onclick
+         * 
          */
-        protected void add_patron(string first_name, string last_name, string email, string password, string phone, string address,
-                                double account_balance)
+        protected void btn_update_Click(object sender, EventArgs e)
         {
-            try
+            //System.Diagnostics.Debug.Write("!!!!!!!!!!!!!!!!!!!!!");
+            if (tb_modify_id.Text == "" || tb_isbm3.Text == "" || tb_author3.Text == "" || tb_title3.Text == "" ||
+                                tb_language3.Text == "" || tb_year3.Text == "" || TextBox2.Text == "")
             {
-                string query = "INSERT INTO patrons VALUES" +
-                                "(@first_name, @last_name, @email, @password, @phone, @address, @account_balance);";
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@password", password);
-                    command.Parameters.AddWithValue("@phone", phone);
-                    command.Parameters.AddWithValue("@address", address);
-                    command.Parameters.AddWithValue("@account_balance", account_balance);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-                get_gridview_data(select_query);
+                // ERROR: EMPTY FIELD DETECTED
+                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
-        }
+                int patron_id = Convert.ToInt32(tb_modify_id.Text.ToString().Trim());
+                string first_name = tb_isbm3.Text.ToString().Trim();
+                string last_name = tb_author3.Text.ToString().Trim();
+                string email = tb_title3.Text.ToString().Trim();
+                string password = TextBox2.Text.ToString().Trim();
+                string phone = dd_genre.Text.ToString().Trim();
+                string address = tb_language3.Text.ToString().Trim();
+                double account_balance = Convert.ToDouble(tb_year3.Text.ToString().Trim());
 
-
-        /*
-        * Update to Patron Table
-        */
-        protected void update_patron(int patron_id, string first_name, string last_name, string email, string password, string phone, string address,
-                                double account_balance)
-        {
-            try
-            {
-                string query = "UPDATE patrons SET " +
-                                "first_name = @first_name, " +
-                                "last_name = @last_name, " +
-                                "email = @email, " +
-                                "password = @password, " +
-                                "phone = @phone, " +
-                                "address = @address, " +
-                                "account_balance = @account_balance " +
-                                "WHERE patron_id = @patron_id;";
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@patron_id", patron_id);
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@password", password);
-                    command.Parameters.AddWithValue("@phone", phone);
-                    command.Parameters.AddWithValue("@address", address);
-                    command.Parameters.AddWithValue("@account_balance", account_balance);
-                    command.ExecuteScalar();
-                    connection.Close();
-                }
-                get_gridview_data(select_query);
+                patron_keeper.update_patron(patron_id, first_name, last_name, email, password, phone, address, account_balance);
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
-            }
+            patron_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*
-         * Deletes patron record from patron table based on patron_id
+         * Delete Button onclick
          */
-        protected void delete_patron(int patron_id)
+        protected void btn_delete_Click(object sender, EventArgs e)
         {
-            try
+
+            if (tb_delete_id.Text == "")
             {
-                string query = "DELETE FROM patrons WHERE patron_id = @patron_id;";
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlCommand command = new SqlCommand(query))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                using (DataTable data_table = new DataTable())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.Parameters.AddWithValue("@patron_id", patron_id);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-                get_gridview_data(select_query);
+                // ERROR: EMPTY FIELD DETECTED
+                System.Diagnostics.Debug.Write("ERROR: EMPTY FIELD DETECTED");
             }
-            catch (Exception ex)
+            else
             {
-                redirect_to_error_page("ERROR", "Cannot delete this record as this patron currently has something checked out.",
-                    "display_patrons.aspx");
+                int patron_id = Convert.ToInt32(tb_delete_id.Text.ToString().Trim());
+                patron_keeper.delete_patron(patron_id);
             }
+            patron_keeper.get_gridview_data(select_query, gridview_books);
         }
 
         /*
@@ -383,8 +252,3 @@ namespace LibraryEnterprise
         }
     }
 }
-
-
-
-
-
