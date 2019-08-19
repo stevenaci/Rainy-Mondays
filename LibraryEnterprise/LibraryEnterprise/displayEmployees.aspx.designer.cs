@@ -193,6 +193,15 @@ namespace LibraryEnterprise {
         protected global::System.Web.UI.WebControls.TextBox tb_modify_id;
         
         /// <summary>
+        /// btn_pull_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_pull_info;
+        
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>

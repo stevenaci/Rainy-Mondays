@@ -260,5 +260,53 @@ namespace LibraryEnterprise
             Session["redirect_URL"] = redirect_URL;
             Server.Transfer("error_page.aspx");
         }
+
+        /*
+         * Fills update textbox fields with data pulled based on patron_id
+         */
+        protected void btn_pull_info_Click(object sender, EventArgs e)
+        {
+            if (tb_modify_id.Text != "")
+            {
+                int employee_id = Convert.ToInt32(tb_modify_id.Text.ToString());
+                pull_employee_info(employee_id);
+            }
+        }
+
+        /*
+         * pull info functionality
+         */
+        protected void pull_employee_info(int employee_id)
+        {
+            try
+            {
+                string query = "SELECT * FROM employees WHERE employee_id = @employee_id;";
+                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con_string))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@employee_id", employee_id);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tb_isbm3.Text = reader[1].ToString();
+                            tb_author3.Text = reader[2].ToString();
+                            tb_title3.Text = reader[3].ToString();
+                            tb_password.Text = reader[4].ToString();
+                            dd_genre.Text = reader[5].ToString();
+                            tb_language3.Text = reader[6].ToString();
+                            tb_year3.Text = reader[7].ToString();
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message.ToString());
+            }
+        }
     }
 }

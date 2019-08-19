@@ -125,8 +125,8 @@
                                         <asp:Label ID="Label2" runat="server" Text="Modify ID:"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tb_modify_id" runat="server" Width="198px"></asp:TextBox>
-
+                                        <asp:TextBox ID="tb_modify_id" runat="server" Width="161px"></asp:TextBox>
+                                        <asp:Button ID="btn_pull_info" runat="server" OnClick="btn_pull_info_Click" Text="Get" CssClass="btn" />
                                     </td>
                                 </tr>
                                 <tr>

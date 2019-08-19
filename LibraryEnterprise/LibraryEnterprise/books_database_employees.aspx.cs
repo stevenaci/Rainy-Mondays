@@ -241,7 +241,7 @@ namespace LibraryEnterprise
         }
 
         /*
-         * Fills update fields with data pulled from book_id
+         * Fills update textbox fields with data pulled based on book_id
          */
         protected void btn_pull_info_Click(object sender, EventArgs e)
         {
@@ -250,7 +250,6 @@ namespace LibraryEnterprise
                 int book_id = Convert.ToInt32(tb_modify_id.Text.ToString());
                 pull_book_info(book_id);
             }
-
         }
 
         /*

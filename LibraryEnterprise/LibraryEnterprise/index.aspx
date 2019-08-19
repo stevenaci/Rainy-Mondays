@@ -25,6 +25,21 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
                         <td>
                             <asp:Button ID="btn1" runat="server" OnClick="btn1_Click" Text="Employee Login" CssClass="indxbtn" />
                         </td>
