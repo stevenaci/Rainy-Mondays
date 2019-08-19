@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: index.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form gives users the option to login as a patron or employee.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

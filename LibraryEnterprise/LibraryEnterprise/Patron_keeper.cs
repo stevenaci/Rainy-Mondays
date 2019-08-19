@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: Patron_keeper.cs
+ * Author: Scott Ritchie
+ * 
+ * Purpose:
+ * Carries out the business logic for CRUD operations for the employees table
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

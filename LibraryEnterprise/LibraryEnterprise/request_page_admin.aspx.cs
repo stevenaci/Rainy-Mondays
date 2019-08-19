@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: request_page_admin.aspx
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Web form allowing employees to search, insert, update and delete records in the requests table. 
+ * Uses Requests_keeper.cs to carry out CRUD operations.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: registration.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form used to register users, inserting a record into the patrons table.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

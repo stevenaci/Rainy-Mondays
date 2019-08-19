@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: homepage.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form that acts as the homepage for employees, giving them a wide range of functionality through
+ * links to various other web forms.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

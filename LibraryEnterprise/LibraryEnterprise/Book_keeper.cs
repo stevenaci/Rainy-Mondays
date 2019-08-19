@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: Book_keeper.cs
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Carries out the business logic for CRUD operations for the books table
+ */ 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: books_database_patrons.aspx
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Web form allowing patrons to search records in the books table. 
+ * Uses Book_keeper.cs to carry out CRUD operations.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

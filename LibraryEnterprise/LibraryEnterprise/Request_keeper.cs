@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: Request_keeper.cs
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Carries out the business logic for CRUD operations for the requests table
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: loginpage.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form that allows employees to login. Redirects to the homepage upon successful login,
+ * setting Session variables to keep track of login status.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

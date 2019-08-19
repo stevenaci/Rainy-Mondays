@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: checkout.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form allowing employees to check out books for patrons.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

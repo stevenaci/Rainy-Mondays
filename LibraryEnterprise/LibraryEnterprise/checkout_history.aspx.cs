@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: checkout_history.aspx
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Web form allowing employees to search records in the checkouts table.
+ * Uses Checkout_keeper.cs to carry out CRUD operations.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +20,9 @@ namespace LibraryEnterprise
 {
     public partial class checkout_history : System.Web.UI.Page
     {
+        // Used to carry out CRUD functionality with checkouts table
+        Checkout_keeper checkout_keeper = new Checkout_keeper();
+
         // The default select query for retrieving checkout data
         string select_query = "SELECT p.email AS 'Patron Email', b.isbn AS 'ISBN', " +
                               "c.date_out AS 'Date Out', c.date_in AS 'Date In' " +
@@ -36,32 +47,7 @@ namespace LibraryEnterprise
 
             if (!IsPostBack)
             {
-                get_gridview_data(select_query);
-            }
-        }
-
-        /*
-         * Retrieve data from any table and display in gridview object in HTML
-         * Simple pass a SELECT query into this function and data will display
-         */
-        private void get_gridview_data(string query)
-        {
-            try
-            { 
-                string con_string = ConfigurationManager.ConnectionStrings["CS"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(con_string))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                using (DataTable data_table = new DataTable())
-                {
-                    data_table.PrimaryKey = new DataColumn[] { data_table.Columns["patron_id"] };
-                    adapter.Fill(data_table);
-                    gridview_books.DataSource = data_table;
-                    gridview_books.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.Message.ToString());
+                checkout_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 
@@ -73,7 +59,7 @@ namespace LibraryEnterprise
             if (tb_email.Text == "" && tb_isbn.Text == "")
             {
                 // display all books if textboxes are empty
-                get_gridview_data(select_query);
+                checkout_keeper.get_gridview_data(select_query, gridview_books);
             }
             else
             {
@@ -86,7 +72,7 @@ namespace LibraryEnterprise
                 multiple_conditions = add_where_conditions("email", email, multiple_conditions);
                 multiple_conditions = add_where_conditions("isbn", isbn, multiple_conditions);
 
-                get_gridview_data(select_query);
+                checkout_keeper.get_gridview_data(select_query, gridview_books);
             }
         }
 

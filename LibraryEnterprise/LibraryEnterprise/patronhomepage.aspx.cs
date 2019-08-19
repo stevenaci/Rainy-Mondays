@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: patronhomepage.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form that acts as the homepage for patrons, displaying their checkout history as well as
+ * allowing them to search for books or add book requests (links to other pages).
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: error_page.cs
+ * Author: Scott Ritchie
+ * 
+ * Purpose:
+ * Web form used as an error page. Other pages will redirect to this page in the case of
+ * and errors (inaccessible pages, etc).
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

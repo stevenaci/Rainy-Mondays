@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: checkin.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form allowing employees to check in books from patrons.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

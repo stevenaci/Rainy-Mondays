@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: patronloginpage.aspx
+ * Author: Steven Carino
+ * 
+ * Purpose:
+ * Web form that allows patrons to login. Redirects to the patronhomepage upon successful login,
+ * setting Session variables to keep track of login status.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

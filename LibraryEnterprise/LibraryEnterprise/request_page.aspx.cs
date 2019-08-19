@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: request_page.aspx
+ * Author: Shawn Pudjowargono
+ * 
+ * Purpose:
+ * Web form allowing patrons to insert records in the requests table. 
+ * Uses Request_keeper.cs to carry out CRUD operations.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

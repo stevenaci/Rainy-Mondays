@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: display_patrons.aspx
+ * Author: Scott Ritchie
+ * 
+ * Purpose:
+ * Web form allowing employees to search, insert, update and delete records in the patrons table.
+ * Uses Patron_keeper.cs to carry out CRUD operations.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
