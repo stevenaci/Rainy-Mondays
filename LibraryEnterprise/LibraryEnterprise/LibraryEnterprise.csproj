@@ -267,6 +267,9 @@
     <Compile Include="request_page_admin.aspx.designer.cs">
       <DependentUpon>request_page_admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Time_keeper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\LibraryEnterprise.dll.config" />
