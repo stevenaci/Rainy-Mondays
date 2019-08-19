@@ -116,7 +116,7 @@
                                         <asp:Label ID="Label2" runat="server" Text="Modify ID:"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tb_modify_id" runat="server" Width="150px"></asp:TextBox>
+                                        <asp:TextBox ID="tb_modify_id" runat="server" Width="199px"></asp:TextBox>
 
                                     </td>
                                 </tr>
@@ -149,7 +149,7 @@
                                         <asp:Label ID="Label1" runat="server" Text="Password: "></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tb_password" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="tb_password" runat="server" Width="198px"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
