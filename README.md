@@ -5,6 +5,3 @@
  Technologies:
  C# .NET and SQL
 
-Authors: 
-Shawn 
-Steven Carino
