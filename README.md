@@ -1,10 +1,5 @@
 # Rainy Mondays
- Enterprise Database project designed for a Library Branch,
- Sheridan College 2019.
- 
- Technologies:
- C# .NET and SQL
- 
- 
- ![Movement AI Demo](https://i.imgur.com/i8X6chb.jpg)
 
+ Enterprise Database and Web Interface designed for use by a (hypothetical) Library Branch.
+ Sheridan College 2nd year final assignment for a C# and .Net course.
+ 
